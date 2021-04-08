@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/dummy_header.h
+stdio.h
+-
+
+/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/main.c
+dummy_header.h
+/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/dummy_header.h
+
