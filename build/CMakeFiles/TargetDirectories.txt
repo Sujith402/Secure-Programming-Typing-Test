@@ -1,0 +1,3 @@
+/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles/edit_cache.dir
+/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles/TypingTest.dir

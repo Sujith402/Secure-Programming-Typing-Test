@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/TypingTest.dir/src/main.c.o  -o TypingTest 
