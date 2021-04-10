@@ -123,6 +123,33 @@ TypingTest/fast:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/build
 .PHONY : TypingTest/fast
 
+src/input.o: src/input.c.o
+
+.PHONY : src/input.o
+
+# target to build an object file
+src/input.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/input.c.o
+.PHONY : src/input.c.o
+
+src/input.i: src/input.c.i
+
+.PHONY : src/input.i
+
+# target to preprocess a source file
+src/input.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/input.c.i
+.PHONY : src/input.c.i
+
+src/input.s: src/input.c.s
+
+.PHONY : src/input.s
+
+# target to generate assembly for a file
+src/input.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/input.c.s
+.PHONY : src/input.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -150,6 +177,87 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/queue.o: src/queue.c.o
+
+.PHONY : src/queue.o
+
+# target to build an object file
+src/queue.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/queue.c.o
+.PHONY : src/queue.c.o
+
+src/queue.i: src/queue.c.i
+
+.PHONY : src/queue.i
+
+# target to preprocess a source file
+src/queue.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/queue.c.i
+.PHONY : src/queue.c.i
+
+src/queue.s: src/queue.c.s
+
+.PHONY : src/queue.s
+
+# target to generate assembly for a file
+src/queue.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/queue.c.s
+.PHONY : src/queue.c.s
+
+src/stuff_to_change.o: src/stuff_to_change.c.o
+
+.PHONY : src/stuff_to_change.o
+
+# target to build an object file
+src/stuff_to_change.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o
+.PHONY : src/stuff_to_change.c.o
+
+src/stuff_to_change.i: src/stuff_to_change.c.i
+
+.PHONY : src/stuff_to_change.i
+
+# target to preprocess a source file
+src/stuff_to_change.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.i
+.PHONY : src/stuff_to_change.c.i
+
+src/stuff_to_change.s: src/stuff_to_change.c.s
+
+.PHONY : src/stuff_to_change.s
+
+# target to generate assembly for a file
+src/stuff_to_change.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.s
+.PHONY : src/stuff_to_change.c.s
+
+src/terminal.o: src/terminal.c.o
+
+.PHONY : src/terminal.o
+
+# target to build an object file
+src/terminal.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/terminal.c.o
+.PHONY : src/terminal.c.o
+
+src/terminal.i: src/terminal.c.i
+
+.PHONY : src/terminal.i
+
+# target to preprocess a source file
+src/terminal.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/terminal.c.i
+.PHONY : src/terminal.c.i
+
+src/terminal.s: src/terminal.c.s
+
+.PHONY : src/terminal.s
+
+# target to generate assembly for a file
+src/terminal.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/terminal.c.s
+.PHONY : src/terminal.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +267,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TypingTest"
+	@echo "... src/input.o"
+	@echo "... src/input.i"
+	@echo "... src/input.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/queue.o"
+	@echo "... src/queue.i"
+	@echo "... src/queue.s"
+	@echo "... src/stuff_to_change.o"
+	@echo "... src/stuff_to_change.i"
+	@echo "... src/stuff_to_change.s"
+	@echo "... src/terminal.o"
+	@echo "... src/terminal.i"
+	@echo "... src/terminal.s"
 .PHONY : help
 
 

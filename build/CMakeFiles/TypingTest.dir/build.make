@@ -57,9 +57,22 @@ include CMakeFiles/TypingTest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/TypingTest.dir/flags.make
 
+CMakeFiles/TypingTest.dir/src/input.c.o: CMakeFiles/TypingTest.dir/flags.make
+CMakeFiles/TypingTest.dir/src/input.c.o: ../src/input.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/TypingTest.dir/src/input.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/TypingTest.dir/src/input.c.o   -c "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/input.c"
+
+CMakeFiles/TypingTest.dir/src/input.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/TypingTest.dir/src/input.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/input.c" > CMakeFiles/TypingTest.dir/src/input.c.i
+
+CMakeFiles/TypingTest.dir/src/input.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/TypingTest.dir/src/input.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/input.c" -o CMakeFiles/TypingTest.dir/src/input.c.s
+
 CMakeFiles/TypingTest.dir/src/main.c.o: CMakeFiles/TypingTest.dir/flags.make
 CMakeFiles/TypingTest.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/TypingTest.dir/src/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/TypingTest.dir/src/main.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/TypingTest.dir/src/main.c.o   -c "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/main.c"
 
 CMakeFiles/TypingTest.dir/src/main.c.i: cmake_force
@@ -70,17 +83,64 @@ CMakeFiles/TypingTest.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/TypingTest.dir/src/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/main.c" -o CMakeFiles/TypingTest.dir/src/main.c.s
 
+CMakeFiles/TypingTest.dir/src/queue.c.o: CMakeFiles/TypingTest.dir/flags.make
+CMakeFiles/TypingTest.dir/src/queue.c.o: ../src/queue.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/TypingTest.dir/src/queue.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/TypingTest.dir/src/queue.c.o   -c "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/queue.c"
+
+CMakeFiles/TypingTest.dir/src/queue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/TypingTest.dir/src/queue.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/queue.c" > CMakeFiles/TypingTest.dir/src/queue.c.i
+
+CMakeFiles/TypingTest.dir/src/queue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/TypingTest.dir/src/queue.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/queue.c" -o CMakeFiles/TypingTest.dir/src/queue.c.s
+
+CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o: CMakeFiles/TypingTest.dir/flags.make
+CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o: ../src/stuff_to_change.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o   -c "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stuff_to_change.c"
+
+CMakeFiles/TypingTest.dir/src/stuff_to_change.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/TypingTest.dir/src/stuff_to_change.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stuff_to_change.c" > CMakeFiles/TypingTest.dir/src/stuff_to_change.c.i
+
+CMakeFiles/TypingTest.dir/src/stuff_to_change.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/TypingTest.dir/src/stuff_to_change.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stuff_to_change.c" -o CMakeFiles/TypingTest.dir/src/stuff_to_change.c.s
+
+CMakeFiles/TypingTest.dir/src/terminal.c.o: CMakeFiles/TypingTest.dir/flags.make
+CMakeFiles/TypingTest.dir/src/terminal.c.o: ../src/terminal.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/TypingTest.dir/src/terminal.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/TypingTest.dir/src/terminal.c.o   -c "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/terminal.c"
+
+CMakeFiles/TypingTest.dir/src/terminal.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/TypingTest.dir/src/terminal.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/terminal.c" > CMakeFiles/TypingTest.dir/src/terminal.c.i
+
+CMakeFiles/TypingTest.dir/src/terminal.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/TypingTest.dir/src/terminal.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/terminal.c" -o CMakeFiles/TypingTest.dir/src/terminal.c.s
+
 # Object files for target TypingTest
 TypingTest_OBJECTS = \
-"CMakeFiles/TypingTest.dir/src/main.c.o"
+"CMakeFiles/TypingTest.dir/src/input.c.o" \
+"CMakeFiles/TypingTest.dir/src/main.c.o" \
+"CMakeFiles/TypingTest.dir/src/queue.c.o" \
+"CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o" \
+"CMakeFiles/TypingTest.dir/src/terminal.c.o"
 
 # External object files for target TypingTest
 TypingTest_EXTERNAL_OBJECTS =
 
+TypingTest: CMakeFiles/TypingTest.dir/src/input.c.o
 TypingTest: CMakeFiles/TypingTest.dir/src/main.c.o
+TypingTest: CMakeFiles/TypingTest.dir/src/queue.c.o
+TypingTest: CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o
+TypingTest: CMakeFiles/TypingTest.dir/src/terminal.c.o
 TypingTest: CMakeFiles/TypingTest.dir/build.make
 TypingTest: CMakeFiles/TypingTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable TypingTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable TypingTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TypingTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
