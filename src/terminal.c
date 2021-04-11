@@ -1,28 +1,29 @@
 #include "terminal.h"
 
 void Init_Terminal() {
+    //enable ncurses to work, disable input buffering and don't echo input onto
+    //terminal
     initscr();
     cbreak();
     noecho();
 
+    //clear the terminal
     clear();
 }
 
-void Update_Terminal() {
-    
-}
-
 WINDOW *Init_Local_Window(WIN *win) {
+    //Initialise the window attributes. Accessible via the window itself but they
+    //are not meant to be accessed (modified mainly)
     win->width = (0.8) * COLS;
     win->height = (0.6) * LINES;
     win->startx = (COLS - win->width)/2;
     win->starty = (LINES - win->height)/2;
 
-
     win->border.bb = win->border.tt = '-';
     win->border.ll = win->border.rr = '|';
     win->border.tl = win->border.tr = '+';
     win->border.bl = win->border.br = '+';
+
     WINDOW *local_win = newwin(win->height,win->width,win->starty,win->startx);
 
     //Allow for detecting function key presses when getting input in the window
@@ -31,13 +32,7 @@ WINDOW *Init_Local_Window(WIN *win) {
 }
 
 void Display_Box(WINDOW *win, WIN *win_props, bool visible) {
-    int x,y,w,h;
     Border border = win_props->border;
-
-    x = win_props->startx;
-    y = win_props->starty;
-    w = win_props->width;
-    h = win_props->height;
 
     if (visible) {
         wborder(win, border.ll,border.rr,border.tt,border.bb,
@@ -49,29 +44,65 @@ void Display_Box(WINDOW *win, WIN *win_props, bool visible) {
     wrefresh(win);
 }
 
-void Display_Text(WINDOW *win,WIN *winProps, Queue *q) {
-    int x = 1;
-    int y = 1;
-    int xMax = winProps->width - 1;
-    int yMax = winProps->height - 1;
-    wmove(win,y,x);
+void Determine_Line_No(Queue *q, WIN *win_props) {
+    int curr_x = 1;
+    int curr_y = 1;
+
+    //Initialise boundries upto which characters may be printed
+    int x_max = win_props->width - 1;
+    int y_max = win_props->height - 1;
+
+    //Determine line numbers
+    int i=0;
+    while (i<q->size) {
+        if (curr_x+q->words[i].len - 1 < x_max) 
+            curr_x+=q->words[i].len;
+        else {
+            curr_y++;
+            curr_x = 1 + q->words[i].len;
+        }
+        q->words[i].line = curr_y;
+        i++;
+    }
+}
+
+void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
+    //Clear the window and show changes.
+    wmove(win,1,1);
+    for (int y=1; y<win_props->height-1; y++){
+        for (int x=1; x<win_props->width - 1; x++)
+            waddch(win, ' ');
+        wmove(win,y+1,1);
+    }
+
+    //Move to start position
+    wmove(win,1,1);
+
+    //Print the words and initialise the line numbers for each word
+    int curr_line = 1;
     for (int i=q->start; i<q->size; i++) {
-        if (x+q->words[i].len - 1 < xMax) {
+        if (curr_line == q->words[i].line - lines_done) {
             wprintw(win,q->words[i].w);
-            x+=q->words[i].len;
         }
         else {
-            if (y+1 <= yMax) {
-                y++;
-                x = 1;
-                mvwprintw(win,y,x,q->words[i].w);
-                x+=q->words[i].len;
-            }
+            curr_line++;
+            if (curr_line >= win_props->height - 1)
+                break;
+            mvwprintw(win,curr_line,1,q->words[i].w);
         }
-        q->words[i].line = y;
     }
+
+    //Move back to start
     wmove(win,1,1);
+
+    //Show changes
     wrefresh(win);
+}
+
+//Queue's pop functionality
+void Delete_Line(WINDOW *win, WIN *win_props, Queue *q, int word_no, int lines_done) {
+    q->start = word_no;
+    Display_Text(win,win_props,q,lines_done);
 }
 
 void Exit_Terminal() {
