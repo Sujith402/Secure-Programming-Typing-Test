@@ -21,9 +21,9 @@ void Init_Terminal();
 
 WINDOW *Init_Local_Window(WIN *win);
 void Display_Box(WINDOW *win, WIN *win_props, bool visible);
-void Display_Text(WINDOW *win, WIN *win_props, Queue *q);
+void Determine_Line_No(Queue *q, WIN *win_props);
+void Display_Text(WINDOW *win, WIN *win_props, Queue *q, int lines_done);
 
-void Change_Colour();
-void print_line(WINDOW *win, int starty, int startx, int width, char *str);
+void Delete_Line(WINDOW *win, WIN *win_props, Queue *q, int word_no,int lines_done);
 
 void Exit_Terminal();
