@@ -9,6 +9,10 @@
 ../include/input.h
 ncurses.h
 -
+stdlib.h
+-
+ctype.h
+-
 queue.h
 ../include/queue.h
 
