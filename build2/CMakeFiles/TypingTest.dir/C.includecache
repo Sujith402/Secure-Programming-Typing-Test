@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/manzood/Coding/Assignments/TypingTest/src/Trie_Construction/Trie.h
+stdlib.h
+-
+
+/home/manzood/Coding/Assignments/TypingTest/src/Trie_Construction/initialize_trie.c
+stdio.h
+-
+stdlib.h
+-
+Trie.h
+/home/manzood/Coding/Assignments/TypingTest/src/Trie_Construction/Trie.h
+
