@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Trie.h"
 #include <time.h>
+#include "trie.h"
+#include "queue.h"
 
 // TODO: 1) add support for all characters
 //       2)
@@ -97,6 +98,23 @@ int fetch_random_word (struct Trie* Words, char* destination) {
 }
 
 
+void generate_30_words (char* buffer) {
+    int bufptr = 0;
+    char current_word[250];
+    for (int i = 0; i < 30; i++) {
+        int len = 0;
+        while (!len) {
+            len = fetch_random_word (Words, current_word);
+        }
+        for (int j = 0; j < len; j++) {
+            buffer[bufptr++] = current_word[j];
+        }
+        buffer[bufptr++] = ' ';
+    }
+    buffer[bufptr] = '\0';
+}
+
+
 // making two functions, that, when combined, all paths and print all words in the trie
 // useful for future debugging
 
@@ -124,36 +142,45 @@ void print_trie_helper (struct TrieNode* current, int ind) {
     }
 }
 
-void print_trie (struct Trie* Words) {
+void print_trie () {
     print_trie_helper (Words->root, 0);
 }
 
 
 // this is the equivalient of main() in this program
 
-void initialize_trie () {
-    freopen ("words.txt", "r", stdin);
+void init_trie () {
+    /* freopen ("../words.txt", "r", stdin); */
+
+    // read stuff from file
+    char* buffer = Read_File ("../words.txt");
+
+
     srand(time(0));
-    struct Trie* Words = (struct Trie* ) malloc (sizeof (struct Trie));
+    Words = (struct Trie* ) malloc (sizeof (struct Trie));
     Words->root = Create_Node ();
 
     /* getting words from file */
 
     char word_to_insert[100];
     char c, len = 0;
-    while ((c = getchar()) != EOF) {
+    int bufptr = 0;
+    while (buffer[bufptr]) {
+        c = buffer[bufptr];
         if (c == '\n' || c == ' ' || c == '.' || c == ',') {
             insert_word(word_to_insert, Words, len);
             len = 0;
         } else {
             word_to_insert[len++] = c;
         }
+        bufptr++;
     }
     if (len > 0) insert_word(word_to_insert, Words, len);
 
-    char random_word[300];
 
-    print_trie (Words);
+    /* char random_word[300]; */
+
+    print_trie ();
 
     /* printf("\n-----------------------------------------------------------------\n"); */
     /* for (int i = 0; i < 100; i++) { */
@@ -171,5 +198,5 @@ void initialize_trie () {
 // will remove main in the actual application, just for testing
 
 /* int main() { */
-    /* initialize_trie(); */
+    /* init_trie(); */
 /* } */
