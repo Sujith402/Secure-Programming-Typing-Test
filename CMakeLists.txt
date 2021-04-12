@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 set(C_STANDARD 11)
 
 project(TypingTest VERSION 1.0)
- 
+
 file(GLOB_RECURSE SRC_FILES src/*.c)
 add_executable(TypingTest ${SRC_FILES})
 
