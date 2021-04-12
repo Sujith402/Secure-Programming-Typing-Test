@@ -123,59 +123,32 @@ TypingTest/fast:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/build
 .PHONY : TypingTest/fast
 
-src/Trie_Construction/Temp/Trie.o: src/Trie_Construction/Temp/Trie.c.o
+src/initialize_trie.o: src/initialize_trie.c.o
 
-.PHONY : src/Trie_Construction/Temp/Trie.o
-
-# target to build an object file
-src/Trie_Construction/Temp/Trie.c.o:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/Trie_Construction/Temp/Trie.c.o
-.PHONY : src/Trie_Construction/Temp/Trie.c.o
-
-src/Trie_Construction/Temp/Trie.i: src/Trie_Construction/Temp/Trie.c.i
-
-.PHONY : src/Trie_Construction/Temp/Trie.i
-
-# target to preprocess a source file
-src/Trie_Construction/Temp/Trie.c.i:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/Trie_Construction/Temp/Trie.c.i
-.PHONY : src/Trie_Construction/Temp/Trie.c.i
-
-src/Trie_Construction/Temp/Trie.s: src/Trie_Construction/Temp/Trie.c.s
-
-.PHONY : src/Trie_Construction/Temp/Trie.s
-
-# target to generate assembly for a file
-src/Trie_Construction/Temp/Trie.c.s:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/Trie_Construction/Temp/Trie.c.s
-.PHONY : src/Trie_Construction/Temp/Trie.c.s
-
-src/Trie_Construction/initialize_trie.o: src/Trie_Construction/initialize_trie.c.o
-
-.PHONY : src/Trie_Construction/initialize_trie.o
+.PHONY : src/initialize_trie.o
 
 # target to build an object file
-src/Trie_Construction/initialize_trie.c.o:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/Trie_Construction/initialize_trie.c.o
-.PHONY : src/Trie_Construction/initialize_trie.c.o
+src/initialize_trie.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/initialize_trie.c.o
+.PHONY : src/initialize_trie.c.o
 
-src/Trie_Construction/initialize_trie.i: src/Trie_Construction/initialize_trie.c.i
+src/initialize_trie.i: src/initialize_trie.c.i
 
-.PHONY : src/Trie_Construction/initialize_trie.i
+.PHONY : src/initialize_trie.i
 
 # target to preprocess a source file
-src/Trie_Construction/initialize_trie.c.i:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/Trie_Construction/initialize_trie.c.i
-.PHONY : src/Trie_Construction/initialize_trie.c.i
+src/initialize_trie.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/initialize_trie.c.i
+.PHONY : src/initialize_trie.c.i
 
-src/Trie_Construction/initialize_trie.s: src/Trie_Construction/initialize_trie.c.s
+src/initialize_trie.s: src/initialize_trie.c.s
 
-.PHONY : src/Trie_Construction/initialize_trie.s
+.PHONY : src/initialize_trie.s
 
 # target to generate assembly for a file
-src/Trie_Construction/initialize_trie.c.s:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/Trie_Construction/initialize_trie.c.s
-.PHONY : src/Trie_Construction/initialize_trie.c.s
+src/initialize_trie.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/initialize_trie.c.s
+.PHONY : src/initialize_trie.c.s
 
 src/input.o: src/input.c.o
 
@@ -294,12 +267,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TypingTest"
-	@echo "... src/Trie_Construction/Temp/Trie.o"
-	@echo "... src/Trie_Construction/Temp/Trie.i"
-	@echo "... src/Trie_Construction/Temp/Trie.s"
-	@echo "... src/Trie_Construction/initialize_trie.o"
-	@echo "... src/Trie_Construction/initialize_trie.i"
-	@echo "... src/Trie_Construction/initialize_trie.s"
+	@echo "... src/initialize_trie.o"
+	@echo "... src/initialize_trie.i"
+	@echo "... src/initialize_trie.s"
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"

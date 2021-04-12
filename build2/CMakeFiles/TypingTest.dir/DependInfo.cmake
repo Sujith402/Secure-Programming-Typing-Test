@@ -4,8 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/manzood/Coding/Assignments/TypingTest/src/Trie_Construction/Temp/Trie.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/Trie_Construction/Temp/Trie.c.o"
-  "/home/manzood/Coding/Assignments/TypingTest/src/Trie_Construction/initialize_trie.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/Trie_Construction/initialize_trie.c.o"
+  "/home/manzood/Coding/Assignments/TypingTest/src/initialize_trie.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/initialize_trie.c.o"
   "/home/manzood/Coding/Assignments/TypingTest/src/input.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/input.c.o"
   "/home/manzood/Coding/Assignments/TypingTest/src/main.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/main.c.o"
   "/home/manzood/Coding/Assignments/TypingTest/src/queue.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/queue.c.o"

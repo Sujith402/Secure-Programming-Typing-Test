@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/initialize_trie.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/initialize_trie.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/initialize_trie.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/input.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/input.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/input.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/main.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/main.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/main.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/queue.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/queue.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/queue.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/terminal.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/terminal.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/terminal.c"
+}
+]

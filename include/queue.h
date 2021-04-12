@@ -18,6 +18,7 @@ typedef struct queue {
 
 char *Read_File( char *fileName );
 void Create_Queue(char *fileName, Queue *words);
+
 void Destroy_Queue(Queue *q);
 
 void Display_Queue(Queue *q);
