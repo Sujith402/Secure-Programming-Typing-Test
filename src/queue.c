@@ -12,13 +12,13 @@ char *Read_File(char *fileName) {
     }
     if (fseek(fp, 0L , SEEK_END) == 0) {
         long buffSize = ftell(fp);
-        if (buffSize == -1) 
+        if (buffSize == -1)
             exit(1);
         if (fseek(fp, 0L, SEEK_SET) != 0) {
             fprintf(stderr,"Error in reading file");
             exit(1);
         }
-        
+
         buff = (char *)malloc(sizeof(char) * (buffSize + 1));
 
         size_t newLen = fread(buff, sizeof(char), buffSize, fp);
