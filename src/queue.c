@@ -41,9 +41,9 @@ void Create_Queue(char *buffer, Queue *q) {
     for (int i=0; buffer[i] != '\0'; i++) {
         //Check if max words have been read
         //Stop reading if that is the case
-        if (currWord == MAX_WORDS) 
+        if (currWord == MAX_WORDS)
             break;
-        
+
         while(buffer[i] != ' ' && buffer[i] != '\0' && buffer[i] != '\n') i++;
         q->words[currWord].len = i-wordStart + 1;
         q->words[currWord].w = malloc(sizeof(char) * ( q->words[currWord].len + 1 ));
@@ -63,7 +63,7 @@ void Create_Queue(char *buffer, Queue *q) {
     q->words[currWord-1].len = len;
 
     //Free the memory allocated to the buffer
-    free(buffer);
+    /* free(buffer); */
 }
 
 void Destroy_Queue(Queue *q) {

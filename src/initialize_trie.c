@@ -180,7 +180,7 @@ void init_trie () {
 
     /* char random_word[300]; */
 
-    print_trie ();
+    /* print_trie (); */
 
     /* printf("\n-----------------------------------------------------------------\n"); */
     /* for (int i = 0; i < 100; i++) { */
