@@ -12,7 +12,7 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q) {
         if (Is_Ok(ch)) {
             if (q->words[word_no].w[letter] == ch)
                 choice = CORRECT;
-            else 
+            else
                 choice = WRONG;
             if (ch == KEY_DC || ch == KEY_BACKSPACE) {
                 Handle_Backspace(&choice,&curr_x,&word_no,&letter, q);
@@ -84,9 +84,9 @@ void Handle_Backspace(int *choice,int *curr_x, int *word_no, int *letter, Queue 
 
 void Handle_Space(Queue *q, int choice, int word_no, int letter) {
     if (q->words[word_no].w[letter] == ' ' || q->words[word_no].w[letter] == '_') {
-        if (choice == WRONG) 
+        if (choice == WRONG)
             q->words[word_no].w[letter] = '_';
-        else 
+        else
             q->words[word_no].w[letter] = ' ';
     }
 }

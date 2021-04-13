@@ -7,6 +7,7 @@ CMakeFiles/TypingTest.dir/src/initialize_trie.c.o: ../src/initialize_trie.c
 
 CMakeFiles/TypingTest.dir/src/input.c.o: ../include/input.h
 CMakeFiles/TypingTest.dir/src/input.c.o: ../include/queue.h
+CMakeFiles/TypingTest.dir/src/input.c.o: ../include/terminal.h
 CMakeFiles/TypingTest.dir/src/input.c.o: ../src/input.c
 
 CMakeFiles/TypingTest.dir/src/main.c.o: ../include/dummy_header.h
