@@ -1,10 +1,15 @@
-#include "high_score.h"
-#include "input.h"
-#include "queue.h"
+
+#include "dummy_header.h"
 #include "terminal.h"
+#include "queue.h"
+#include "input.h"
+#include "trie.h"
+#include <ncurses.h>
+
 
 int main() {
     // lead to main menu from here
+
     init_trie();
     /* printf("Done initializing the trie\n"); */
 
@@ -15,6 +20,7 @@ int main() {
     //Preprocessing
     WIN text_window_props;
     WINDOW *text_window = Init_Local_Window(&text_window_props, 0.6, 0.8);
+
     Queue q;
     /* char *buff = Read_File("../text.txt"); */
     char buff[1000];
@@ -31,7 +37,7 @@ int main() {
     //Till here
 
     //The local window is automatically deallocated when Exit_Terminal is called
-    //delwin(text_window);
+
     Exit_Terminal();
 
     Destroy_Queue(&q);

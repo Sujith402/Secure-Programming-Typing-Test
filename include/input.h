@@ -6,6 +6,7 @@
 
 #include "high_score.h"
 
+
 #define WRONG 1
 #define CORRECT 2
 #define BACK 3

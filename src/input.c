@@ -9,6 +9,7 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q) {
 
     //Exit when F1 is pressed
     while (word_no != q->size && ( ch = wgetch(win) ) != KEY_F(1) && ch != KEY_F(2)) {
+
         if (Is_Ok(ch)) {
             if (q->words[word_no].w[letter] == ch)
                 choice = CORRECT;
@@ -69,6 +70,7 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q) {
 
         }
     }
+
 }
 
 void Handle_Backspace(int *choice,int *curr_x, int *word_no, int *letter, Queue *q) {

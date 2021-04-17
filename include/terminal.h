@@ -20,6 +20,7 @@ typedef struct WIN {
 void Init_Terminal();
 
 WINDOW *Init_Local_Window(WIN *win, float height, float width);
+
 void Display_Box(WINDOW *win, WIN *win_props, bool visible);
 void Determine_Line_No(Queue *q, WIN *win_props);
 void Display_Text(WINDOW *win, WIN *win_props, Queue *q, int lines_done);

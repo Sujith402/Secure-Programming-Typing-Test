@@ -16,6 +16,7 @@ WINDOW *Init_Local_Window(WIN *win, float height, float width) {
     //are not meant to be accessed (modified mainly)
     win->width = (width) * COLS;
     win->height = (height) * LINES;
+
     win->startx = (COLS - win->width)/2;
     win->starty = (LINES - win->height)/2;
 
