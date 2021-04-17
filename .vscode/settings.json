@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "dummy_header.h": "c",
+        "terminal.h": "c"
+    }
+}

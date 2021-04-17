@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/high_score.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/high_score.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/high_score.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/initialize_trie.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/initialize_trie.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/initialize_trie.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/input.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/input.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/input.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/main.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/main.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/main.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/queue.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/queue.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/queue.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stuff_to_change.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stuff_to_change.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/terminal.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/terminal.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/terminal.c"
+}
+]
