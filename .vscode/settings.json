@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "dummy_header.h": "c",
-        "terminal.h": "c"
+        "terminal.h": "c",
+        "high_score.h": "c",
+        "input.h": "c"
     }
 }

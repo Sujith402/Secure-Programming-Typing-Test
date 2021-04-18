@@ -2,3 +2,7 @@ practice.c
 src/stuff_to_change.c
 include/stuff_to_change.h
 debug.txt
+
+build/CMakeFiles/
+build/cmake_install.cmake 
+build/CMakeCache.txt 

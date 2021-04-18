@@ -6,17 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/dummy_header.h
-stdio.h
--
-
-../include/input.h
-ncurses.h
--
-stdlib.h
--
-ctype.h
--
+../include/high_score.h
 terminal.h
 ../include/terminal.h
 
@@ -34,15 +24,7 @@ ncurses.h
 queue.h
 ../include/queue.h
 
-/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/main.c
-dummy_header.h
-/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/dummy_header.h
-terminal.h
-/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/terminal.h
-queue.h
-/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/queue.h
-input.h
-/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/input.h
-ncurses.h
--
+/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/high_score.c
+high_score.h
+/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/high_score.h
 

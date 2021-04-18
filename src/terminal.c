@@ -8,6 +8,7 @@ void Init_Terminal() {
     noecho();
 
     //clear the terminal
+    //keypad(stdscr,true);
     clear();
 }
 
@@ -54,7 +55,7 @@ void Determine_Line_No(Queue *q, WIN *win_props) {
     int y_max = win_props->height - 1;
 
     //Determine line numbers
-    int i=0;
+    int i=q->start;
     while (i<q->size) {
         if (curr_x+q->words[i].len - 1 < x_max) 
             curr_x+=q->words[i].len;
@@ -80,9 +81,14 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
     wmove(win,1,1);
 
     //Print the words and initialise the line numbers for each word
-    int curr_line = 1;
-    for (int i=q->start; i<q->size; i++) {
-        if (curr_line == q->words[i].line - lines_done) {
+    int curr_line = q->words[q->start].line;
+    //int i = q->start;
+    //while (i<q->size && q->words[i].line - lines_done != curr_line+1) i++;
+    for (int i = q->start; i<q->size; i++) {
+        //handle when switching back to text from high scores
+        if (q->words[i].w[q->words[i].len - 1] == '_')
+            q->words[i].w[q->words[i].len - 1] = ' ';
+        if (q->words[i].line == curr_line) {
             wprintw(win,q->words[i].w);
         }
         else {
@@ -104,6 +110,13 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
 void Delete_Line(WINDOW *win, WIN *win_props, Queue *q, int word_no, int lines_done) {
     q->start = word_no;
     Display_Text(win,win_props,q,lines_done);
+}
+
+void Destroy_Window(WINDOW* win) {
+    wclear(win);
+    wrefresh(win);
+    delwin(win);
+
 }
 
 void Exit_Terminal() {

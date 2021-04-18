@@ -123,7 +123,6 @@ TypingTest/fast:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/build
 .PHONY : TypingTest/fast
 
-<<<<<<< HEAD
 src/high_score.o: src/high_score.c.o
 
 .PHONY : src/high_score.o
@@ -178,8 +177,6 @@ src/initialize_trie.c.s:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/initialize_trie.c.s
 .PHONY : src/initialize_trie.c.s
 
-=======
->>>>>>> dummy
 src/input.o: src/input.c.o
 
 .PHONY : src/input.o
@@ -324,15 +321,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TypingTest"
-<<<<<<< HEAD
 	@echo "... src/high_score.o"
 	@echo "... src/high_score.i"
 	@echo "... src/high_score.s"
 	@echo "... src/initialize_trie.o"
 	@echo "... src/initialize_trie.i"
 	@echo "... src/initialize_trie.s"
-=======
->>>>>>> dummy
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"

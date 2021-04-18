@@ -11,9 +11,15 @@
 #define CORRECT 2
 #define BACK 3
 
+typedef struct text_window_state {
+    int word_no, letter;
+    int curr_x;
+    int lines_done;
+}Text_Window_State;
 
-void Take_Input(WINDOW *win, WIN *win_props, Queue *q);
-void Handle_Backspace(int *res,int *col, int *word_no, int *curr, Queue *q);
+void Init_Text_Window_State(Text_Window_State* state);
+void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Window_State* state);
+void Handle_Backspace(int *res,Text_Window_State* state, Queue *q);
 void Handle_Space(Queue *q, int res, int word_no, int letter);
 int Is_Ok(int ch);
 void Init_Colour();

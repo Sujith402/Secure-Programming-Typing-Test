@@ -26,5 +26,6 @@ void Determine_Line_No(Queue *q, WIN *win_props);
 void Display_Text(WINDOW *win, WIN *win_props, Queue *q, int lines_done);
 
 void Delete_Line(WINDOW *win, WIN *win_props, Queue *q, int word_no,int lines_done);
+void Destroy_Window(WINDOW *win);
 
 void Exit_Terminal();

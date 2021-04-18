@@ -1,46 +1,55 @@
 #include "input.h"
 
-void Take_Input(WINDOW *win, WIN *win_props, Queue *q) {
+void Init_Text_Window_State(Text_Window_State* state) {
+    state->word_no = state->letter = 0;
+    state->curr_x = 0;
+    state->lines_done = 0;
+}
+
+void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Window_State* state) {
     //ch is int as function keys return >8 bits
-    int ch,choice,word_no,letter;
-    word_no = letter = 0;
-    int curr_x = 1;
-    int lines_done = 0;
+    int ch,choice;
+
+    state->word_no = q->start;
+    state->letter = 0;
+    state->curr_x = 1;
+    state->lines_done = 0;
+
 
     //Exit when F1 is pressed
-    while (word_no != q->size && ( ch = wgetch(win) ) != KEY_F(1) && ch != KEY_F(2)) {
+    while (state->word_no != q->size && ( ch = wgetch(win) ) != KEY_F(1) && ch != KEY_F(2)) {
 
         if (Is_Ok(ch)) {
-            if (q->words[word_no].w[letter] == ch)
+            if (q->words[state->word_no].w[state->letter] == ch)
                 choice = CORRECT;
             else 
                 choice = WRONG;
             if (ch == KEY_DC || ch == KEY_BACKSPACE) {
-                Handle_Backspace(&choice,&curr_x,&word_no,&letter, q);
+                Handle_Backspace(&choice,state, q);
             }
 
             //Show that space was typed in wrong if space was the character
-            Handle_Space( q, choice, word_no, letter);
+            Handle_Space( q, choice, state->word_no, state->letter);
 
             //Change colour based on choice
             switch(choice) {
                 case WRONG:
                     wattron(win, COLOR_PAIR(WRONG));
-                    waddch(win,q->words[word_no].w[letter]);
+                    waddch(win,q->words[state->word_no].w[state->letter]);
                     wattroff(win, COLOR_PAIR(WRONG));
-                    curr_x++; letter++;
+                    state->curr_x++; state->letter++;
                     break;
                 case CORRECT:
                     wattron(win, COLOR_PAIR(CORRECT));
-                    waddch(win,q->words[word_no].w[letter]);
+                    waddch(win,q->words[state->word_no].w[state->letter]);
                     wattroff(win, COLOR_PAIR(CORRECT));
-                    curr_x++; letter++;
+                    state->curr_x++; state->letter++;
                     break;
                 case BACK:
                     wattron(win, COLOR_PAIR(BACK));
-                    mvwaddch(win,q->words[word_no].line - lines_done, curr_x,q->words[word_no].w[letter]);
+                    mvwaddch(win,q->words[state->word_no].line - state->lines_done, state->curr_x,q->words[state->word_no].w[state->letter]);
                     wattroff(win, COLOR_PAIR(BACK));
-                    wmove(win,q->words[word_no].line - lines_done, curr_x);
+                    wmove(win,q->words[state->word_no].line - state->lines_done, state->curr_x);
                     break;
                 default:
                     break;
@@ -48,43 +57,40 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q) {
 
             //Move to the next word if the current one is done
             //If moving to the next line, delete the previous line as well
-            if (letter >= q->words[word_no].len) {
-                word_no++;
-                q->start = word_no;
-                letter = 0;
-                if (q->words[word_no-1].line != q->words[word_no].line) {
-                    lines_done++;
-                    Delete_Line(win,win_props,q,word_no,lines_done);
+            if (state->letter >= q->words[state->word_no].len) {
+                state->word_no++;
+                state->letter = 0;
+                if (q->words[state->word_no-1].line != q->words[state->word_no].line) {
+                    q->start = state->word_no;
+                    (state->lines_done)++;
+                    Delete_Line(win,win_props,q,state->word_no,state->lines_done);
                     wmove(win,1, 1);
-                    curr_x = 1;
+                    state->curr_x = 1;
                 }
             }
             wrefresh(win);
         }
     }
     if (ch == KEY_F(2)) {
-        delwin(win);
-
-        Display_Scores();
-        while ((ch = wgetch(win)) != KEY_F(1)) {
-
-        }
+        *screen_no = 2;
     }
-
+    else {
+        *screen_no = 3;
+    }
 }
 
-void Handle_Backspace(int *choice,int *curr_x, int *word_no, int *letter, Queue *q) {
+void Handle_Backspace(int *choice,Text_Window_State* state, Queue *q) {
     //Checks if going back does not voilate the window boundary
     //Updates which word you were at and the coresponding letter
-    if (*curr_x>1) {
+    if (state->curr_x>1) {
         (*choice) = BACK;
-        (*curr_x)--;
-        if (*letter == 0) {
-            (*word_no)--;
-            *letter = q->words[*word_no].len - 1;
+        (state->curr_x)--;
+        if (state->letter == 0) {
+            (state->word_no)--;
+            state->letter = q->words[state->word_no].len - 1;
         }
         else {
-            (*letter)--;
+            (state->letter)--;
         }
     }
     else {
