@@ -7,8 +7,7 @@ char *Read_File(char *fileName) {
     char *buff;
     FILE *fp = fopen(fileName, "r");
     if (fp == NULL) {
-        fprintf(stderr,"Error in reading file");
-        exit(1);
+        return NULL;
     }
     if (fseek(fp, 0L , SEEK_END) == 0) {
         long buffSize = ftell(fp);
@@ -22,6 +21,10 @@ char *Read_File(char *fileName) {
         buff = (char *)malloc(sizeof(char) * (buffSize + 1));
 
         size_t newLen = fread(buff, sizeof(char), buffSize, fp);
+        if (newLen == 0) {
+            free(buff);
+            return NULL;
+        }
         if (ferror(fp) != 0) {
             fprintf(stderr, "Error in reading file");
             exit(1);

@@ -155,6 +155,8 @@ void init_trie () {
     // read stuff from file
     char* buffer = Read_File ("../words.txt");
 
+    if (buffer == NULL)
+        return;
 
     srand(time(0));
     Words = (struct Trie* ) malloc (sizeof (struct Trie));
