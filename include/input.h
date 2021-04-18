@@ -21,5 +21,4 @@ void Init_Text_Window_State(Text_Window_State* state);
 void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Window_State* state);
 void Handle_Backspace(int *res,Text_Window_State* state, Queue *q);
 void Handle_Space(Queue *q, int res, int word_no, int letter);
-int Is_Ok(int ch);
 void Init_Colour();

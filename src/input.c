@@ -17,8 +17,9 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Wind
 
 
     //Exit when F1 is pressed
-    while (state->word_no != q->size && ( ch = wgetch(win) ) != KEY_F(1) && ch != KEY_F(2)) {
-
+    while (state->word_no != q->size && ( ch = wgetch(win) ) != KEY_F(1) ) {
+        if (ch == KEY_F(2) || ch == KEY_F(3) || ch == KEY_F(4))
+            break;
         if (Is_Ok(ch)) {
             if (q->words[state->word_no].w[state->letter] == ch)
                 choice = CORRECT;
@@ -71,12 +72,7 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Wind
             wrefresh(win);
         }
     }
-    if (ch == KEY_F(2)) {
-        *screen_no = 2;
-    }
-    else {
-        *screen_no = 3;
-    }
+    *screen_no = switch_screen(ch); 
 }
 
 void Handle_Backspace(int *choice,Text_Window_State* state, Queue *q) {
@@ -107,16 +103,7 @@ void Handle_Space(Queue *q, int choice, int word_no, int letter) {
     }
 }
 
-int Is_Ok(int ch) {
-    //If key pressed is an escape sequence(a control character), wgetch()
-    //returns > 255.
-    if (ch>=0 && ch <=255)
-        return 1;
-    //Check whether delete or backspace are pressed
-    else if (ch == KEY_DC || ch == KEY_BACKSPACE)
-        return 1;
-    return 0;
-}
+
 
 void Init_Colour() {
     //Check if the terminal supports colors. Exit otherwise
