@@ -19,6 +19,7 @@ void push (struct Stack* st, int data) {
         st->tail = create_node (data, NULL);
     } else {
         st->tail->next = create_node (data, st->tail);
+        st->tail = st->tail->next;
     }
 }
 

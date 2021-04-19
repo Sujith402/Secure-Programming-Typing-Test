@@ -74,12 +74,12 @@ clean: CMakeFiles/TypingTest.dir/clean
 CMakeFiles/TypingTest.dir/all:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/depend
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target TypingTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target TypingTest"
 .PHONY : CMakeFiles/TypingTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TypingTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TypingTest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles 0
 .PHONY : CMakeFiles/TypingTest.dir/rule

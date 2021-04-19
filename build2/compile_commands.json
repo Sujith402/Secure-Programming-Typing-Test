@@ -1,6 +1,11 @@
 [
 {
   "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/high_score.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/high_score.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/high_score.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
   "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/initialize_trie.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/initialize_trie.c",
   "file": "/home/manzood/Coding/Assignments/TypingTest/src/initialize_trie.c"
 },
@@ -18,6 +23,21 @@
   "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
   "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/queue.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/queue.c",
   "file": "/home/manzood/Coding/Assignments/TypingTest/src/queue.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/score.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/score.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/score.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/stack.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/stack.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/stack.c"
+},
+{
+  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
+  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/stuff_to_change.c",
+  "file": "/home/manzood/Coding/Assignments/TypingTest/src/stuff_to_change.c"
 },
 {
   "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
