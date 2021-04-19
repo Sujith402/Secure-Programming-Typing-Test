@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ncurses.h>
+#include "terminal.h"
 #include <stdlib.h>
 #include <ctype.h>
 
@@ -18,7 +18,7 @@ typedef struct text_window_state {
 }Text_Window_State;
 
 void Init_Text_Window_State(Text_Window_State* state);
-void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Window_State* state);
+void Take_Input(WINDOW *win, WIN *win_props, WINDOW *score_window, WIN* score_window_props, Queue *q, int *screen_no, Text_Window_State* state, struct Score* score);
 void Handle_Backspace(int *res,Text_Window_State* state, Queue *q);
 void Handle_Space(Queue *q, int res, int word_no, int letter);
 void Init_Colour();

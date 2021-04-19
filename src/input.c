@@ -1,4 +1,5 @@
 #include "input.h"
+#include "terminal.h"
 
 void Init_Text_Window_State(Text_Window_State* state) {
     state->word_no = state->letter = 0;
@@ -6,7 +7,7 @@ void Init_Text_Window_State(Text_Window_State* state) {
     state->lines_done = 0;
 }
 
-void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Window_State* state) {
+void Take_Input(WINDOW *win, WIN *win_props, WINDOW *score_window, WIN *score_window_props, Queue *q, int *screen_no, Text_Window_State* state, struct Score* score) {
     //ch is int as function keys return >8 bits
     int ch,choice;
 
@@ -21,6 +22,9 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Wind
         if (ch == KEY_F(2) || ch == KEY_F(3) || ch == KEY_F(4))
             break;
         if (Is_Ok(ch)) {
+            Display_Current_Score (score_window, score_window_props, score);
+            wmove(win,q->words[state->word_no].line - state->lines_done, state->curr_x);
+
             if (q->words[state->word_no].w[state->letter] == ch)
                 choice = CORRECT;
             else
@@ -39,18 +43,21 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Wind
                     waddch(win,q->words[state->word_no].w[state->letter]);
                     wattroff(win, COLOR_PAIR(WRONG));
                     state->curr_x++; state->letter++;
+                    calculate_score (score, 0);
                     break;
                 case CORRECT:
                     wattron(win, COLOR_PAIR(CORRECT));
                     waddch(win,q->words[state->word_no].w[state->letter]);
                     wattroff(win, COLOR_PAIR(CORRECT));
                     state->curr_x++; state->letter++;
+                    calculate_score (score, 1);
                     break;
                 case BACK:
                     wattron(win, COLOR_PAIR(BACK));
                     mvwaddch(win,q->words[state->word_no].line - state->lines_done, state->curr_x,q->words[state->word_no].w[state->letter]);
                     wattroff(win, COLOR_PAIR(BACK));
                     wmove(win,q->words[state->word_no].line - state->lines_done, state->curr_x);
+                    calculate_score (score, -1);
                     break;
                 default:
                     break;
@@ -72,7 +79,7 @@ void Take_Input(WINDOW *win, WIN *win_props, Queue *q, int *screen_no, Text_Wind
             wrefresh(win);
         }
     }
-    *screen_no = switch_screen(ch); 
+    *screen_no = switch_screen(ch);
 }
 
 void Handle_Backspace(int *choice,Text_Window_State* state, Queue *q) {

@@ -12,14 +12,19 @@ void Init_Terminal() {
     clear();
 }
 
-WINDOW *Init_Local_Window(WIN *win, float height, float width) {
+WINDOW *Init_Local_Window(WIN *win, float height, float width, int startx, int starty) {
     //Initialise the window attributes. Accessible via the window itself but they
     //are not meant to be accessed (modified mainly)
     win->width = (width) * COLS;
     win->height = (height) * LINES;
 
-    win->startx = (COLS - win->width)/2;
-    win->starty = (LINES - win->height)/2;
+    if (startx == -1 && starty == -1) {
+        win->startx = (COLS - win->width)/2;
+        win->starty = (LINES - win->height)/2;
+    } else {
+        win->startx = startx;
+        win->starty = starty;
+    }
 
     win->border.bb = win->border.tt = '-';
     win->border.ll = win->border.rr = '|';
@@ -57,7 +62,7 @@ void Determine_Line_No(Queue *q, WIN *win_props) {
     //Determine line numbers
     int i=q->start;
     while (i<q->size) {
-        if (curr_x+q->words[i].len - 1 < x_max) 
+        if (curr_x+q->words[i].len - 1 < x_max)
             curr_x+=q->words[i].len;
         else {
             curr_y++;
@@ -100,9 +105,21 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
     }
 
     //Move back to start
-    wmove(win,1,1);
+    wmove(win,0,0);
 
     //Show changes
+    wrefresh(win);
+}
+
+void Display_Current_Score (WINDOW* win, WIN* win_props, struct Score* score) {
+    wclear (win);
+    wmove (win, 1, 1);
+    /* wprintw(win, "WPM = "); */
+    char s[100];
+    sprintf(s, "WPM = %d, accuracy = %d", score->net_WPM, score->accuracy);
+
+    /* printf("%d ", score->all_typed_entries); */
+    wprintw(win, s);
     wrefresh(win);
 }
 

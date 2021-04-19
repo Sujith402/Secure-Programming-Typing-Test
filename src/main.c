@@ -1,11 +1,8 @@
-
 #include "dummy_header.h"
-#include "terminal.h"
-#include "queue.h"
 #include "input.h"
+#include "queue.h"
 #include "trie.h"
 #include <ncurses.h>
-
 
 int main() {
     // lead to main menu from here
@@ -18,9 +15,11 @@ int main() {
     Init_Terminal();
     Init_Colour();
 
-    int score = 5000;
+    /* int score = 5000; */
 
     Queue q;
+    struct Score* score;
+
     /* char *buff = Read_File("../text.txt"); */
     char buff[1000];
     generate_30_words (buff);
@@ -29,30 +28,41 @@ int main() {
     Text_Window_State state;
     Init_Text_Window_State(&state);
 
+    score = init_score();
+
+    // initialising score
+
     Check_Scores("../High_Scores.txt");
     //Put under the start() function
     //Preprocessing
     while (true) {
         if (screen_no == TEXT) {
             WIN text_window_props;
-            WINDOW *text_window = Init_Local_Window(&text_window_props, 0.6, 0.8);
+            WINDOW *text_window = Init_Local_Window(&text_window_props, 0.6, 0.8, -1, -1);
+
+            WIN score_window_props;
+            WINDOW *score_window = Init_Local_Window (&score_window_props, 0.05, 0.2, 145, 6);
+            /* score_window_props.startx = 100; */
+            /* score_window_props.starty = 100; */
 
             Determine_Line_No(&q,&text_window_props);
 
             //Display the box with the words
             Display_Box(text_window,&text_window_props,true);
+
             Display_Text(text_window,&text_window_props,&q, state.lines_done);
 
-            Take_Input(text_window, &text_window_props, &q, &screen_no, &state);
+            Take_Input(text_window, &text_window_props, score_window, &score_window_props, &q, &screen_no, &state, score);
 
             //wborder(text_window, ' ', ' ', ' ',' ',' ',' ',' ',' ');
             Destroy_Window(text_window);
+            Destroy_Window(score_window);
         }
 
         else if (screen_no == HIGH_SCORE) {
             WIN score_window_props;
-            WINDOW *score_window = Init_Local_Window(&score_window_props,0.8,0.6);
-            Display_Box(score_window, &score_window_props, true);            
+            WINDOW *score_window = Init_Local_Window(&score_window_props, 0.8, 0.6, -1, -1);
+            Display_Box(score_window, &score_window_props, true);
             //keypad(score_window,true);
             Display_Scores(score_window, &score_window_props,&screen_no);
 
@@ -61,15 +71,15 @@ int main() {
 
         else if (screen_no == USER_PROMPT) {
             WIN take_name_window_props;
-            WINDOW *take_name_window = Init_Local_Window(&take_name_window_props,0.2,0.3);
+            WINDOW *take_name_window = Init_Local_Window(&take_name_window_props, 0.2, 0.3, -1, -1);
             Display_Box(take_name_window, &take_name_window_props, &screen_no);
 
             char user_name[31];
             int flag = Update_High_Score(take_name_window,&take_name_window_props, &screen_no, user_name);
-            
+
             if (flag)
-                Update_File("../High_Scores.txt",user_name, score);
-            
+                Update_File("../High_Scores.txt",user_name, score->net_WPM);
+
             Destroy_Window(take_name_window);
         }
         else {
@@ -83,6 +93,10 @@ int main() {
     Exit_Terminal();
 
     Destroy_Queue(&q);
+
+    print_score (score);
+
+    /* print_stack (score); */
     //Display_Queue(&q);
     return 0;
 }

@@ -123,6 +123,33 @@ TypingTest/fast:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/build
 .PHONY : TypingTest/fast
 
+src/high_score.o: src/high_score.c.o
+
+.PHONY : src/high_score.o
+
+# target to build an object file
+src/high_score.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/high_score.c.o
+.PHONY : src/high_score.c.o
+
+src/high_score.i: src/high_score.c.i
+
+.PHONY : src/high_score.i
+
+# target to preprocess a source file
+src/high_score.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/high_score.c.i
+.PHONY : src/high_score.c.i
+
+src/high_score.s: src/high_score.c.s
+
+.PHONY : src/high_score.s
+
+# target to generate assembly for a file
+src/high_score.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/high_score.c.s
+.PHONY : src/high_score.c.s
+
 src/initialize_trie.o: src/initialize_trie.c.o
 
 .PHONY : src/initialize_trie.o
@@ -231,6 +258,87 @@ src/queue.c.s:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/queue.c.s
 .PHONY : src/queue.c.s
 
+src/score.o: src/score.c.o
+
+.PHONY : src/score.o
+
+# target to build an object file
+src/score.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/score.c.o
+.PHONY : src/score.c.o
+
+src/score.i: src/score.c.i
+
+.PHONY : src/score.i
+
+# target to preprocess a source file
+src/score.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/score.c.i
+.PHONY : src/score.c.i
+
+src/score.s: src/score.c.s
+
+.PHONY : src/score.s
+
+# target to generate assembly for a file
+src/score.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/score.c.s
+.PHONY : src/score.c.s
+
+src/stack.o: src/stack.c.o
+
+.PHONY : src/stack.o
+
+# target to build an object file
+src/stack.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stack.c.o
+.PHONY : src/stack.c.o
+
+src/stack.i: src/stack.c.i
+
+.PHONY : src/stack.i
+
+# target to preprocess a source file
+src/stack.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stack.c.i
+.PHONY : src/stack.c.i
+
+src/stack.s: src/stack.c.s
+
+.PHONY : src/stack.s
+
+# target to generate assembly for a file
+src/stack.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stack.c.s
+.PHONY : src/stack.c.s
+
+src/stuff_to_change.o: src/stuff_to_change.c.o
+
+.PHONY : src/stuff_to_change.o
+
+# target to build an object file
+src/stuff_to_change.c.o:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o
+.PHONY : src/stuff_to_change.c.o
+
+src/stuff_to_change.i: src/stuff_to_change.c.i
+
+.PHONY : src/stuff_to_change.i
+
+# target to preprocess a source file
+src/stuff_to_change.c.i:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.i
+.PHONY : src/stuff_to_change.c.i
+
+src/stuff_to_change.s: src/stuff_to_change.c.s
+
+.PHONY : src/stuff_to_change.s
+
+# target to generate assembly for a file
+src/stuff_to_change.c.s:
+	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.s
+.PHONY : src/stuff_to_change.c.s
+
 src/terminal.o: src/terminal.c.o
 
 .PHONY : src/terminal.o
@@ -267,6 +375,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TypingTest"
+	@echo "... src/high_score.o"
+	@echo "... src/high_score.i"
+	@echo "... src/high_score.s"
 	@echo "... src/initialize_trie.o"
 	@echo "... src/initialize_trie.i"
 	@echo "... src/initialize_trie.s"
@@ -279,6 +390,15 @@ help:
 	@echo "... src/queue.o"
 	@echo "... src/queue.i"
 	@echo "... src/queue.s"
+	@echo "... src/score.o"
+	@echo "... src/score.i"
+	@echo "... src/score.s"
+	@echo "... src/stack.o"
+	@echo "... src/stack.i"
+	@echo "... src/stack.s"
+	@echo "... src/stuff_to_change.o"
+	@echo "... src/stuff_to_change.i"
+	@echo "... src/stuff_to_change.s"
 	@echo "... src/terminal.o"
 	@echo "... src/terminal.i"
 	@echo "... src/terminal.s"
