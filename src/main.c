@@ -41,7 +41,7 @@ int main() {
             WINDOW *text_window = Init_Local_Window(&text_window_props, 0.6, 0.8, -1, -1);
 
             WIN score_window_props;
-            WINDOW *score_window = Init_Local_Window (&score_window_props, 0.05, 0.2, 145, 6);
+            WINDOW *score_window = Init_Local_Window (&score_window_props, 0.1, 0.2, 0.6, 0.1);
             /* score_window_props.startx = 100; */
             /* score_window_props.starty = 100; */
 
@@ -49,6 +49,7 @@ int main() {
 
             //Display the box with the words
             Display_Box(text_window,&text_window_props,true);
+            Display_Box(score_window,&score_window_props,true);
 
             Display_Text(text_window,&text_window_props,&q, state.lines_done);
 

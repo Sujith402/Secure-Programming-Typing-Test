@@ -18,7 +18,7 @@ typedef struct WIN {
 
 void Init_Terminal();
 
-WINDOW *Init_Local_Window(WIN *win, float height, float width, int startx, int starty);
+WINDOW *Init_Local_Window(WIN *win, float height, float width, float startx, float starty);
 
 void Display_Box(WINDOW *win, WIN *win_props, bool visible);
 void Determine_Line_No(Queue *q, WIN *win_props);
