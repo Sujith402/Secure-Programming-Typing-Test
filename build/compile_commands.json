@@ -26,6 +26,16 @@
 },
 {
   "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/score.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/score.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/score.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
+  "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/stack.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stack.c\"",
+  "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stack.c"
+},
+{
+  "directory": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build",
   "command": "/usr/bin/cc  -I\"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/include\"    -o CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o   -c \"/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stuff_to_change.c\"",
   "file": "/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/src/stuff_to_change.c"
 },

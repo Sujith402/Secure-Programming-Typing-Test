@@ -12,7 +12,7 @@ void Init_Terminal() {
     clear();
 }
 
-WINDOW *Init_Local_Window(WIN *win, float height, float width, int startx, int starty) {
+WINDOW *Init_Local_Window(WIN *win, float height, float width, float startx, float starty) {
     //Initialise the window attributes. Accessible via the window itself but they
     //are not meant to be accessed (modified mainly)
     win->width = (width) * COLS;
@@ -22,8 +22,8 @@ WINDOW *Init_Local_Window(WIN *win, float height, float width, int startx, int s
         win->startx = (COLS - win->width)/2;
         win->starty = (LINES - win->height)/2;
     } else {
-        win->startx = startx;
-        win->starty = starty;
+        win->startx = COLS * startx;
+        win->starty = LINES * starty;
     }
 
     win->border.bb = win->border.tt = '-';
@@ -105,19 +105,26 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
     }
 
     //Move back to start
-    wmove(win,0,0);
+    wmove(win,1,1);
 
     //Show changes
     wrefresh(win);
 }
 
 void Display_Current_Score (WINDOW* win, WIN* win_props, struct Score* score) {
-    wclear (win);
-    wmove (win, 1, 1);
+    /*wclear (win);*/
+    wmove(win,1,1);
+    for (int y=1; y<win_props->height-1; y++){
+        for (int x=1; x<win_props->width - 1; x++)
+            waddch(win, ' ');
+        wmove(win,y+1,1);
+    }
+
     /* wprintw(win, "WPM = "); */
     char s[100];
-    sprintf(s, "WPM = %d, accuracy = %d", score->net_WPM, score->accuracy);
+    snprintf(s, 100, "WPM = %d, accuracy = %d", score->net_WPM, score->accuracy);
 
+    wmove (win, win_props->height/2 - (1-win_props->height%2), (win_props->width - strlen(s))/2);
     /* printf("%d ", score->all_typed_entries); */
     wprintw(win, s);
     wrefresh(win);
