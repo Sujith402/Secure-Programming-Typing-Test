@@ -4,44 +4,43 @@
 #include "trie.h"
 #include "queue.h"
 
-// TODO: 1) add support for all characters
-//       2)
-
 // function to get a random number within a particular range
-
 int getrand (int a, int b) {
     return (rand() % (b - a + 1)) + a;
 }
 
-// helper function to copy a word from a particular source to a destination
 
+// helper function to copy a word from a particular source to a destination
 void copyword (char* source, char* destination, int len) {
-    for (int i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
         destination[i] = source[i];
     }
 }
 
 
 // function that creates a node and returns it
-
 struct TrieNode * Create_Node () {
     struct TrieNode * temp = (struct TrieNode *) malloc (sizeof (struct TrieNode));
 
-    for (int i = 0; i < NUM_CHILDREN; i++) {
-        temp->child[i] = NULL;
-    }
+    if (!temp) {
+        fprintf (stderr, "Failed to allocate memory for a Node\n");
+        exit(1);
+    } else {
+        for (size_t i = 0; i < NUM_CHILDREN; i++) {
+            temp->child[i] = NULL;
+        }
+        int endofword = 0;
 
-    int endofword = 0;
-    return temp;
+        return temp;
+    }
 }
 
 
 // function that inserts the given word into the Trie called Words
-
 void insert_word (char *new_word, struct Trie* Words, int len) {
     struct TrieNode* current = Words->root;
 
-    for (int i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
         int ind = new_word[i];
         if (!current->child[ind]) {
             current->child[ind] = Create_Node();
@@ -54,7 +53,6 @@ void insert_word (char *new_word, struct Trie* Words, int len) {
 
 
 // function that fetches a random  word from the trie
-
 int fetch_random_word (struct Trie* Words, char* destination) {
     struct TrieNode* current = Words->root;
     if (!current) return 0;
@@ -62,15 +60,13 @@ int fetch_random_word (struct Trie* Words, char* destination) {
     int plen = 0;
     int found = 0;
     int len = 0;
-    /* printf("Going to try fetching a word now\n"); */
-    int inverse_probability = 160;
+    int inverse_probability = 160;  // used to ensure that words are of reasonable length on average
 
     while (!found && current) {
         plen = 0;
 
         for (int i = 0; i < NUM_CHILDREN; i++) {
             if (current->child[i]) {
-                /* printf("First possiblility: %c\n", i); */
                 possibilities[plen++] = i;
             }
         }
@@ -79,16 +75,13 @@ int fetch_random_word (struct Trie* Words, char* destination) {
             found = 1;
         } else {
             int index = getrand(0, plen - 1);
-            /* printf("Here: %c\n", possibilities[index]); */
             destination[len++] = possibilities[index];
 
             if (current->child[possibilities[index]]->endofword) {
-                /* printf("flipping coin\n"); */
-                int coinflip = getrand (0, inverse_probability);
+                int coinflip = getrand (0, inverse_probability); // flipping a coin to figure out if we want to end our search here
                 if (coinflip == inverse_probability) found = 1;
             }
 
-            /* printf("Moving to %c\n", possibilities[index]); */
             current = current->child[possibilities[index]];
             if (inverse_probability > 10) inverse_probability /= 2;
         }
@@ -98,6 +91,7 @@ int fetch_random_word (struct Trie* Words, char* destination) {
 }
 
 
+// generates 50 words and stores them into a buffer
 void generate_50_words (char* buffer) {
     int bufptr = 0;
     char current_word[50];
@@ -150,11 +144,10 @@ void print_trie () {
 
 
 // this is the equivalient of main() in this program
-
 void init_trie () {
-    /* freopen ("../words.txt", "r", stdin); */
 
     // read stuff from file
+
     char* buffer = Read_File ("../words.txt");
     if (!Check_Words(buffer)) {
         fprintf(stderr, "Words.txt not right format");
@@ -167,7 +160,13 @@ void init_trie () {
     }
 
     srand(time(0));
+
     Words = (struct Trie* ) malloc (sizeof (struct Trie));
+    if (!Words) {
+        fprintf (stderr, "Failed to initialise trie\n");
+        exit (1);
+    }
+
     Words->root = Create_Node ();
 
     /* getting words from file */
@@ -175,6 +174,7 @@ void init_trie () {
     char word_to_insert[100];
     char c, len = 0;
     int bufptr = 0;
+
     while (buffer[bufptr]) {
         c = buffer[bufptr];
         if (c == '\n' || c == ' ' || c == '.' || c == ',') {
@@ -192,17 +192,6 @@ void init_trie () {
     /* char random_word[300]; */
 
     //print_trie ();
-
-    /* printf("\n-----------------------------------------------------------------\n"); */
-    /* for (int i = 0; i < 100; i++) { */
-        /* int len = fetch_random_word(Words, random_word); */
-        /* if (len) { */
-            /* for (int i = 0; i < len; i++) { */
-                /* printf("%c", random_word[i]); */
-            /* } */
-            /* printf("\n"); */
-        /* } */
-    /* } */
 }
 
 bool Check_Words(char *buffer) {
@@ -210,8 +199,31 @@ bool Check_Words(char *buffer) {
         while(buffer[i] != '\0' && (isalnum(buffer[i]) || buffer[i] == '\'')) i++;
         if (buffer[i] == ' ' || buffer[i] == '\n' || buffer[i] == ',' || buffer[i] == '.')
             i++;
-        else 
+        else
             return 0;
     }
     return 1;
 }
+
+void destroy_children (struct TrieNode* current) {
+    if (!current) return;
+
+    for (size_t i = 0; i < 256; i++) {
+        if (current->child[i]) {
+            destroy_children (current->child[i]);
+        }
+    }
+
+    free (current);
+    return;
+}
+
+// recursively frees memory allocated for the trie and its nodes
+void destroy_trie (struct Trie* Words) {
+    if (!Words) return;
+    struct TrieNode* root = Words->root;
+    destroy_children (Words->root);
+    free (Words->root);
+    free (Words);
+}
+

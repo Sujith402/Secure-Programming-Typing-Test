@@ -63,15 +63,43 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/splint-TypingTest.dir/clean
 clean: CMakeFiles/TypingTest.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/splint-TypingTest.dir
+
+# All Build rule for target.
+CMakeFiles/splint-TypingTest.dir/all:
+	$(MAKE) -f CMakeFiles/splint-TypingTest.dir/build.make CMakeFiles/splint-TypingTest.dir/depend
+	$(MAKE) -f CMakeFiles/splint-TypingTest.dir/build.make CMakeFiles/splint-TypingTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles --progress-num= "Built target splint-TypingTest"
+.PHONY : CMakeFiles/splint-TypingTest.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/splint-TypingTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/splint-TypingTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles 0
+.PHONY : CMakeFiles/splint-TypingTest.dir/rule
+
+# Convenience name for target.
+splint-TypingTest: CMakeFiles/splint-TypingTest.dir/rule
+
+.PHONY : splint-TypingTest
+
+# clean rule for target.
+CMakeFiles/splint-TypingTest.dir/clean:
+	$(MAKE) -f CMakeFiles/splint-TypingTest.dir/build.make CMakeFiles/splint-TypingTest.dir/clean
+.PHONY : CMakeFiles/splint-TypingTest.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/TypingTest.dir
 
 # All Build rule for target.
-CMakeFiles/TypingTest.dir/all:
+CMakeFiles/TypingTest.dir/all: CMakeFiles/splint-TypingTest.dir/all
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/depend
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target TypingTest"

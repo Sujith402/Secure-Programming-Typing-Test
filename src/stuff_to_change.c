@@ -3,5 +3,5 @@
 #include <stdlib.h>
 
 char *ReadFile(char *fileName) {
-    
+
 }

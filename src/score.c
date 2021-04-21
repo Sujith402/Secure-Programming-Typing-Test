@@ -4,16 +4,21 @@
 struct Score* init_score () {
     struct Score* score = (struct Score*) malloc (sizeof (struct Score));
 
-    score->all_typed_entries = 0;
-    score->gross_WPM = 0;
-    score->net_WPM = 0;
-    score->start_time = time(0);
-    score->uncorrected_errors = 0;
-    score->correct_entries = 0;
-    score->accuracy = 0;
-    score->prev_entry_state = init_stack();
+    if (!score) {
+        fprintf (stderr, "Unable to initialise score\n");
+        exit (1);
+    } else {
+        score->all_typed_entries = 0;
+        score->gross_WPM = 0;
+        score->net_WPM = 0;
+        score->start_time = time(0);
+        score->uncorrected_errors = 0;
+        score->correct_entries = 0;
+        score->accuracy = 0;
+        score->prev_entry_state = init_stack();
 
-    return score;
+        return score;
+    }
 }
 
 
@@ -70,4 +75,8 @@ void print_stack (struct Score* score) {
     }
 
     printf("\n");
+}
+
+void destroy_score (struct Score* score) {
+    free (score);
 }

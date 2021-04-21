@@ -1,3 +1,4 @@
 /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/edit_cache.dir
 /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/rebuild_cache.dir
+/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/splint-TypingTest.dir
 /home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir
