@@ -22,8 +22,8 @@ int switch_screen(int ch);
 int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name);
 bool Is_Ok(chtype ch);
 
-void Update_File(char *fileName, char *user_name, int score); 
-    
+void Update_File(char *fileName, char *user_name, int score);
+
 void print_entry(WINDOW *win, WIN* win_props, int y, Entry curr_entry);
 void Check_Scores(char* fileName);
 

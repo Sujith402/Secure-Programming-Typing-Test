@@ -1,22 +1,22 @@
-#include "stack.h"
+#include "../include/stack.h"
 #include <stdio.h>
 
 struct Stack* init_stack () {
     struct Stack* temp = (struct Stack*) malloc (sizeof (struct Stack));
     if (!temp) {
         fprintf (stderr, "Unable to initialise stack\n");
-        exit (1);
+        exit (EXIT_FAILURE);
     }
 
     temp->tail = NULL;
     return temp;
 }
 
-struct Node* create_node (int data, struct Node* prev) {
+static struct Node* create_node (int data, struct Node* prev) {
     struct Node* temp = (struct Node*) malloc (sizeof (struct Node));
     if (!temp) {
         fprintf (stderr, "Unable to create stack node\n");
-        exit (1);
+        exit (EXIT_FAILURE);
     }
 
     temp->data = data;
@@ -27,7 +27,7 @@ struct Node* create_node (int data, struct Node* prev) {
 
 void push (struct Stack* st, int data) {
     if (!st->tail) {
-        st->tail = create_node (data, NULL);
+        st->tail = create_node (data, st->tail);
     } else {
         st->tail->next = create_node (data, st->tail);
         st->tail = st->tail->next;
@@ -49,8 +49,9 @@ int pop (struct Stack* st) {
     return retval;
 }
 
-void destroy_stack (struct Stack* st, int data) {
+void destroy_stack (struct Stack* st) {
     if (!st) return;
-    while (pop (st) != -1);
+    while (pop (st) != -1); // continues until the stack has no nodes left
+    free (st->tail);
     free (st);
 }

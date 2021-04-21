@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include "score.h"
+#include "../include/score.h"
 
 struct Score* init_score () {
     struct Score* score = (struct Score*) malloc (sizeof (struct Score));
 
     if (!score) {
         fprintf (stderr, "Unable to initialise score\n");
-        exit (1);
+        exit (EXIT_FAILURE);
     } else {
         score->all_typed_entries = 0;
         score->gross_WPM = 0;
@@ -22,7 +22,7 @@ struct Score* init_score () {
 }
 
 
-struct Score* calculate_score (struct Score* current_score, int choice) {
+void calculate_score (struct Score* current_score, int choice) {
     switch (choice) {
         case 0:                 // wrong
             current_score->all_typed_entries++;
@@ -41,28 +41,28 @@ struct Score* calculate_score (struct Score* current_score, int choice) {
             break;
     }
 
-    float time_taken = (float) (time(0) - current_score->start_time) / 60.0;
+    float time_taken = (float) (time(0) - current_score->start_time) / 60.0f;
     float denominator = (float) 5 * time_taken;
     float gross_WPM = (float) current_score->all_typed_entries / denominator;
     float net_WPM = gross_WPM - (float) (current_score->uncorrected_errors / time_taken);
     float accuracy = ((float) current_score->correct_entries / (float) current_score->all_typed_entries);
 
-    current_score -> gross_WPM = gross_WPM;
-    current_score -> net_WPM = net_WPM;
+    current_score -> gross_WPM = (int) gross_WPM;
+    current_score -> net_WPM = (int) net_WPM;
     if (current_score->net_WPM < 0) current_score->net_WPM = 0;
-    current_score -> accuracy = accuracy * 100.0;
+    current_score -> accuracy = (int) (accuracy * 100.0);
 
     /* print_score (current_score); */
 
-    return current_score;
+    /* return current_score; */
 }
 
 // displays the score onto the terminal
 void print_score (struct Score* score) {
     printf("All typed entries: %d\tUncorrected Errors: %d\n", score->all_typed_entries, score->uncorrected_errors);
     printf("Gross WPM: %d\tNet WPM: %d\tAccuracy: %d\n", score->gross_WPM, score->net_WPM, score->accuracy);
-    printf("Start time: %ld\n", score->start_time);
-    printf("End time: %ld\n", time(0));
+    printf("Start time: %ld\n", (long) score->start_time);
+    printf("End time: %ld\n", (long) time(0));
     printf("Correct Entries: %d\n", score->correct_entries);
 }
 
@@ -78,5 +78,6 @@ void print_stack (struct Score* score) {
 }
 
 void destroy_score (struct Score* score) {
+    destroy_stack (score->prev_entry_state);
     free (score);
 }

@@ -13,6 +13,7 @@ struct Score {
 };
 
 struct Score* init_score ();
-struct Score* calculate_score (struct Score* current_score, int choice);
+void calculate_score (struct Score* current_score, int choice);
 void print_score (struct Score* score);
 void print_stack (struct Score* score);
+void destroy_score (struct Score* score);

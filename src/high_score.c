@@ -1,4 +1,4 @@
-#include "high_score.h"
+#include "../include/high_score.h"
 
 //update the entries with the necessary info
 //buffer has already been sanitized so no checks are performed here
@@ -9,21 +9,23 @@ int Initialize_Entries(Entry *entries, char *buff) {
     strcpy(entries[0].name,"NAMES");
     strcpy(entries[0].score, "SCORES");
 
+    size_t i; // put this declaration here to fix a strange splint parseerror
+
     if (buff != NULL) {
-        for (size_t i=0;curr_entry != MAX_HIGH_SCORE_ENTRIES && buff[i] != '\0'; i++) {
-            while ( buff[i] != '\0' && buff[i]!=' ' && buff[i] != '\n') i++;
+        for (i = 0; curr_entry != MAX_HIGH_SCORE_ENTRIES && buff[i] != '\0'; i++) {
+            while (buff[i] != '\0' && buff[i]!=' ' && buff[i] != '\n') i++;
             if (buff[i] == ' ') {
-                max_size = i-start > 30 ? 30 : i-start;
+                max_size = (size_t) (i - start > 30 ? 30 : i - start);
                 strncpy(entries[curr_entry].name, &buff[start], max_size);
                 entries[curr_entry].name[max_size] = '\0';
             }
             else if (buff[i] == '\n') {
-                max_size = i-start > 10 ? 10 : i-start;
+                max_size = (size_t) (i - start > 10 ? 10 : i - start);
                 strncpy(entries[curr_entry].score, &buff[start], max_size);
                 entries[curr_entry].score[max_size] = '\0';
                 curr_entry++;
             }
-            start = i+1;
+            start = (int) i + 1;
         }
     }
     return curr_entry;
@@ -33,20 +35,22 @@ int Initialize_Entries(Entry *entries, char *buff) {
 void Display_Scores(WINDOW *win, WIN *win_props, int *screen_no) {
 
     int ch;
-    wmove(win,1,1);
-    wrefresh(win);
+    (void) wmove(win,1,1);
+    (void) wrefresh(win);
 
     char *buff = Read_File("../High_Scores.txt");
 
+    int i;
     Entry entries[MAX_HIGH_SCORE_ENTRIES];
 
-    int max_entries = Initialize_Entries(entries,buff); 
+    int max_entries = Initialize_Entries(entries, buff);
 
-    int x = (win_props->width - strlen("High Scores"))/2;
-    mvwprintw(win,1,x,"HIGH SCORES");
+    int x = (int) (win_props->width - strlen("High Scores"))/2;
+    (void) mvwprintw(win,1,x,"HIGH SCORES");
 
     int y = 2;
-    for (int i=0; i<max_entries && y!=win_props->height - 1; i++) {
+
+    for (i=0; i<max_entries && y!=win_props->height - 1; i++) {
         print_entry(win,win_props,y,entries[i]);
         y++;
     }
@@ -114,7 +118,7 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
                 waddch(win, ch);
                 if (ch != ' ')
                     name[word_length++] = ch;
-                else 
+                else
                     name[word_length++] = '_';
                 curr_x++;
             }
@@ -123,7 +127,7 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
 
     name[word_length] = '\0';
 
-    *screen_no = switch_screen(ch); 
+    *screen_no = switch_screen(ch);
     return flag;
 }
 
@@ -180,7 +184,7 @@ void Update_File(char *fileName, char *user_name, int score) {
                 return;
             }
         }
-        
+
     }
 
     //adding an entry as the last line to the file
@@ -210,7 +214,7 @@ void print_entry(WINDOW *win, WIN* win_props, int y, Entry curr_entry) {
 
     x = win_props->width/2 + (win_props->width/2 - strlen(curr_entry.score))/2;
 
-    
+
     mvwprintw(win,y,x,curr_entry.score);
 
 }
