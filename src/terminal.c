@@ -16,7 +16,7 @@ WINDOW *Init_Local_Window(WIN *win, float height, float width, float startx, flo
     //Initialise the window attributes. Accessible via the window itself but they
     //are not meant to be accessed (modified mainly)
     win->width = (width) * COLS;
-    win->height = (height) * LINES;
+    win->height = (height) * LINES > 3 ? (height) * LINES : 3;
 
     if (startx == -1 && starty == -1) {
         win->startx = (COLS - win->width)/2;
@@ -60,7 +60,7 @@ void Determine_Line_No(Queue *q, WIN *win_props) {
     int y_max = win_props->height - 1;
 
     //Determine line numbers
-    int i=q->start;
+    size_t i=q->start;
     while (i<q->size) {
         if (curr_x+q->words[i].len - 1 < x_max)
             curr_x+=q->words[i].len;
@@ -76,8 +76,8 @@ void Determine_Line_No(Queue *q, WIN *win_props) {
 void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
     //Clear the window and show changes.
     wmove(win,1,1);
-    for (int y=1; y<win_props->height-1; y++){
-        for (int x=1; x<win_props->width - 1; x++)
+    for (size_t y=1; y<win_props->height-1; y++){
+        for (size_t x=1; x<win_props->width - 1; x++)
             waddch(win, ' ');
         wmove(win,y+1,1);
     }
@@ -89,7 +89,7 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
     int curr_line = q->words[q->start].line;
     //int i = q->start;
     //while (i<q->size && q->words[i].line - lines_done != curr_line+1) i++;
-    for (int i = q->start; i<q->size; i++) {
+    for (size_t i = q->start; i<q->size; i++) {
         //handle when switching back to text from high scores
         if (q->words[i].w[q->words[i].len - 1] == '_')
             q->words[i].w[q->words[i].len - 1] = ' ';
@@ -100,7 +100,7 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
             curr_line++;
             if (curr_line >= win_props->height - 1)
                 break;
-            mvwprintw(win,curr_line,1,q->words[i].w);
+            mvwprintw(win,curr_line - lines_done ,1,q->words[i].w);
         }
     }
 
@@ -114,8 +114,8 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
 void Display_Current_Score (WINDOW* win, WIN* win_props, struct Score* score) {
     /*wclear (win);*/
     wmove(win,1,1);
-    for (int y=1; y<win_props->height-1; y++){
-        for (int x=1; x<win_props->width - 1; x++)
+    for (size_t y=1; y<win_props->height-1; y++){
+        for (size_t x=1; x<win_props->width - 1; x++)
             waddch(win, ' ');
         wmove(win,y+1,1);
     }

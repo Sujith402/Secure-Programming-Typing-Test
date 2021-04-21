@@ -9,7 +9,8 @@ void Init_Text_Window_State(Text_Window_State* state) {
 
 void Take_Input(WINDOW *win, WIN *win_props, WINDOW *score_window, WIN *score_window_props, Queue *q, int *screen_no, Text_Window_State* state, struct Score* score) {
     //ch is int as function keys return >8 bits
-    int ch,choice;
+    chtype ch;   //chtype comes from ncurses. Always is able to hold character codes.
+    int choice;
 
     state->word_no = q->start;
     state->letter = 0;

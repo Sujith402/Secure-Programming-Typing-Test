@@ -5,6 +5,9 @@
 #define USER_PROMPT 3
 #define EXIT 4
 
+#define MAX_HIGH_SCORE_ENTRIES 50
+#define MAX_USER_NAME_LENGTH 30
+
 #define ENTER_KEY 10
 
 typedef struct entry{
@@ -17,7 +20,7 @@ void Display_Scores(WINDOW *win, WIN *win_props, int *screen_no);
 
 int switch_screen(int ch);
 int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name);
-int Is_Ok(int ch);
+bool Is_Ok(chtype ch);
 
 void Update_File(char *fileName, char *user_name, int score); 
     
