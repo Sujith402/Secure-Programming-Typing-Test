@@ -7,6 +7,7 @@ char *Read_File(char *fileName) {
     char *buff;
     FILE *fp = fopen(fileName, "r");
     if (fp == NULL) {
+        fprintf(stderr,"File read failed\n");
         return NULL;
     }
     if (fseek(fp, 0L , SEEK_END) == 0) {
@@ -20,6 +21,10 @@ char *Read_File(char *fileName) {
 
         buff = (char *)malloc(sizeof(char) * (buffSize + 1));
 
+        if (buff == NULL) {
+            fprintf(stderr,"Memory allocation to file read buffer failed\n");
+            exit(1);
+        }
         size_t newLen = fread(buff, sizeof(char), buffSize, fp);
         if (newLen == 0) {
             free(buff);
@@ -38,10 +43,9 @@ char *Read_File(char *fileName) {
 void Create_Queue(char *buffer, Queue *q) {
     q->start = 0;
     q->size = 0;
-    int wordStart = 0;
-    int currWord = 0;
-
-    for (int i=0; buffer[i] != '\0'; i++) {
+    size_t wordStart = 0;
+    size_t currWord = 0;
+    for (size_t i=0; buffer[i] != '\0'; i++) {
         //Check if max words have been read
         //Stop reading if that is the case
         if (currWord == MAX_WORDS)
@@ -57,22 +61,24 @@ void Create_Queue(char *buffer, Queue *q) {
         wordStart = i+1;
     }
 
-    //Change the last word. Remove the space character and reallocate the right
-    //amount of memory. Update it's length
+    //Change the last word. Remove the space character. 
+    //Update it's length
     q->size = currWord;
-    int len = q->words[currWord-1].len-1;
-    q->words[currWord-1].w = realloc(q->words[currWord-1].w,sizeof(char) * (len + 1));
-    q->words[currWord-1].w[len] = '\0';
-    q->words[currWord-1].len = len;
+    int last_word_len = q->words[currWord-1].len-1;
+    q->words[currWord-1].w[last_word_len] = '\0';
+    q->words[currWord-1].len = last_word_len;
 
-    //Free the memory allocated to the buffer
-    //free(buffer);
 }
 
 void Destroy_Queue(Queue *q) {
     for (int i=0; i<q->size; i++) {
         free(q->words[i].w);
     }
+}
+
+void Destroy_Read_Buffer(char *buff) {
+    if (buff != NULL)
+        free(buff);
 }
 
 //helper func for debugging

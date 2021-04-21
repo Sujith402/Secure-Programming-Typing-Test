@@ -98,18 +98,20 @@ int fetch_random_word (struct Trie* Words, char* destination) {
 }
 
 
-void generate_30_words (char* buffer) {
+void generate_50_words (char* buffer) {
     int bufptr = 0;
-    char current_word[250];
-    for (int i = 0; i < 30; i++) {
+    char current_word[50];
+    for (int i = 0; i < 50; i++) {
         int len = 0;
         while (!len) {
             len = fetch_random_word (Words, current_word);
         }
-        for (int j = 0; j < len; j++) {
-            buffer[bufptr++] = current_word[j];
+        if (bufptr + len < MAX_BUFFER_SIZE) {
+            for (int j = 0; j < len; j++) {
+                buffer[bufptr++] = current_word[j];
+            }
+            buffer[bufptr++] = ' ';
         }
-        buffer[bufptr++] = ' ';
     }
     buffer[bufptr] = '\0';
 }
@@ -154,9 +156,15 @@ void init_trie () {
 
     // read stuff from file
     char* buffer = Read_File ("../words.txt");
+    if (!Check_Words(buffer)) {
+        fprintf(stderr, "Words.txt not right format");
+        exit(1);  //error. Handle this.
+    }
 
-    if (buffer == NULL)
-        return;
+    if (buffer == NULL) {
+        fprintf(stderr,"Error in reading words.txt\n");
+        exit(1);   //error. Handle this
+    }
 
     srand(time(0));
     Words = (struct Trie* ) malloc (sizeof (struct Trie));
@@ -179,7 +187,7 @@ void init_trie () {
     }
     if (len > 0) insert_word(word_to_insert, Words, len);
 
-    free(buffer);
+    Destroy_Read_Buffer(buffer);
 
     /* char random_word[300]; */
 
@@ -197,9 +205,13 @@ void init_trie () {
     /* } */
 }
 
-
-// will remove main in the actual application, just for testing
-
-/* int main() { */
-    /* init_trie(); */
-/* } */
+bool Check_Words(char *buffer) {
+    for (size_t i = 0; buffer[i] != '\0';) {
+        while(buffer[i] != '\0' && (isalnum(buffer[i]) || buffer[i] == '\'')) i++;
+        if (buffer[i] == ' ' || buffer[i] == '\n' || buffer[i] == ',' || buffer[i] == '.')
+            i++;
+        else 
+            return 0;
+    }
+    return 1;
+}

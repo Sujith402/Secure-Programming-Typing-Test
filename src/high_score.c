@@ -4,13 +4,13 @@
 //buffer has already been sanitized so no checks are performed here
 int Initialize_Entries(Entry *entries, char *buff) {
     int start = 0,curr_entry = 1;
-    int max_size;
+    size_t max_size;
 
     strcpy(entries[0].name,"NAMES");
     strcpy(entries[0].score, "SCORES");
 
     if (buff != NULL) {
-        for (int i=0;curr_entry != 50 && buff[i] != '\0'; i++) {
+        for (size_t i=0;curr_entry != MAX_HIGH_SCORE_ENTRIES && buff[i] != '\0'; i++) {
             while ( buff[i] != '\0' && buff[i]!=' ' && buff[i] != '\n') i++;
             if (buff[i] == ' ') {
                 max_size = i-start > 30 ? 30 : i-start;
@@ -38,12 +38,7 @@ void Display_Scores(WINDOW *win, WIN *win_props, int *screen_no) {
 
     char *buff = Read_File("../High_Scores.txt");
 
-    if (buff == NULL) {
-        FILE *fp = fopen("../High_Scores.txt", "w+");
-        fclose(fp);
-    }
-
-    Entry entries[50];
+    Entry entries[MAX_HIGH_SCORE_ENTRIES];
 
     int max_entries = Initialize_Entries(entries,buff); 
 
@@ -63,8 +58,7 @@ void Display_Scores(WINDOW *win, WIN *win_props, int *screen_no) {
 
     *screen_no = switch_screen(ch);
 
-    if (buff!=NULL)
-        free(buff);
+    Destroy_Read_Buffer(buff);
 }
 
 //Change the current screen number (used in main to actually change screen)
@@ -91,18 +85,18 @@ int switch_screen(int ch) {
 //Ask for username input
 //Does not take function keys except F1, F2, F3, F4, enter
 int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
-    int ch;
+    chtype ch;
     int curr_x = 2;
     int y = (win_props->height - 3)/2 + 2;
-    int i = 0;
-    int flag = 0;  //whether update_file is called or not
+    int word_length = 0;
+    bool flag = 0;  //whether update_file is called or not
     wmove(win,1,1);
     wprintw(win,"Enter user name: ");
     wmove(win,y,curr_x);
 
     while ((ch = wgetch(win)) != KEY_F(1) && ch != KEY_F(2) && ch != KEY_F(3) && ch != KEY_F(4)) {
         if (ch == ENTER_KEY) {
-            if (i!=0){
+            if (word_length!=0){
                 flag = 1;
                 break;
             }
@@ -113,21 +107,21 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
                     curr_x--;
                     mvwaddch(win,y,curr_x,' ');
                     wmove(win,y,curr_x);
-                    i--;
+                    word_length--;
                 }
             }
-            else if (curr_x - 2 <= 30){
+            else if (curr_x - 2 <= MAX_USER_NAME_LENGTH){
                 waddch(win, ch);
                 if (ch != ' ')
-                    name[i++] = ch;
+                    name[word_length++] = ch;
                 else 
-                    name[i++] = '_';
+                    name[word_length++] = '_';
                 curr_x++;
             }
         }
     }
 
-    name[i] = '\0';
+    name[word_length] = '\0';
 
     *screen_no = switch_screen(ch); 
     return flag;
@@ -136,9 +130,9 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
 void Update_File(char *fileName, char *user_name, int score) {
     char *buff = Read_File(fileName);
 
-    int curr_score;
-    int start;
-    int i = 0;
+    long int curr_score;
+    size_t start;
+    size_t i = 0;
     char temp;
 
     FILE* fp = fopen(fileName,"w+");
@@ -160,16 +154,15 @@ void Update_File(char *fileName, char *user_name, int score) {
             curr_score = 0;
             i++;
             while (buff[i] != '\n' && buff[i] != '\0'){
-                //if (buff[i] >= '0' && buff[i] <= '9'){
+                //check for integer overflow
+                if (curr_score <= ( INT32_MAX - (buff[i]- '0') )/10) {
                     curr_score = curr_score *10 + buff[i] - '0';
-                    i++;
-                //}
-                //else{
-                //    fprintf(fp,"%s %d\n",user_name,score);
-                //    fclose(fp);
-                //    free(buff);
-                //    return;
-                //}
+                }
+                else {
+                    //add in something here. For now it just doesn't take the other integers
+                    //into account
+                }
+                i++;
             }
             if (score >= curr_score) {
                 temp = buff[start];
@@ -183,7 +176,7 @@ void Update_File(char *fileName, char *user_name, int score) {
                 fprintf(fp,"%s",&buff[start]);
 
                 fclose(fp);
-                free(buff);
+                Destroy_Read_Buffer(buff);
                 return;
             }
         }
@@ -194,11 +187,11 @@ void Update_File(char *fileName, char *user_name, int score) {
     fprintf(fp,"%s",buff);
     fprintf(fp,"%s %d\n",user_name,score);
     fclose(fp);
-    free(buff);
+    Destroy_Read_Buffer(buff);
 
 }
 
-int Is_Ok(int ch) {
+bool Is_Ok(chtype ch) {
     //If key pressed is an escape sequence(a control character), wgetch()
     //returns > 255.
     if (ch>=0 && ch <=255)
@@ -231,8 +224,7 @@ void Check_Scores(char *fileName) {
     char temp_buff[45];
     int score;
     if (fp == NULL) {
-        fclose(fp);
-        fp = fopen(fileName,"w+");
+        fp = fopen(fileName,"w");
         fclose(fp);
         return;
     }

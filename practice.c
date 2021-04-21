@@ -2,11 +2,10 @@
 #include <ncurses.h>
 
 int main() {
-    char c;
-    initscr();
-    cbreak();
-    c = getch();
-    printf("Entered character is: %c\n",c);
-    getch();
-    endwin();
+    int ch;
+    char s[100],s2[100];
+    char buff[200];
+    fgets(buff,200,stdin);
+    printf("Number scanned: %d\n",sscanf(buff, "%s %d\n%s",s,&ch,s2));
+    printf("%s\n%d\n%s\n",s,ch, s2);
 }

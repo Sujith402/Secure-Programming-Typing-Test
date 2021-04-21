@@ -1,0 +1,34 @@
+//Stack smashing detected
+if (bufptr + len < MAX_BUFFER_SIZE) {
+    for (int j = 0; j < len; j++) {
+        buffer[bufptr++] = current_word[j];
+    }
+    buffer[bufptr++] = ' ';
+} 
+
+//Overpopulating the queue 
+if (currWord == MAX_WORDS)
+            break;
+
+//Input sanitization
+void Check_Scores(char *fileName) {
+    FILE* fp = fopen(fileName,"r");
+    int max_line_size = 45;
+    char buffer[max_line_size];
+    char temp_buff[45];
+    int score;
+    if (fp == NULL) {
+        fp = fopen(fileName,"w");
+        fclose(fp);
+        return;
+    }
+    while (fgets(buffer,max_line_size,fp) != NULL) {
+        if (sscanf(buffer,"%s %d\n%s",temp_buff,&score,temp_buff) != 2){
+            fclose(fp);
+            fp = fopen(fileName,"w+");
+            //fprintf(fp,"%d\n",sscanf(buffer,"%s %d\n",temp_buff,&score));
+            fclose(fp);
+            break;
+        }
+    }
+}
