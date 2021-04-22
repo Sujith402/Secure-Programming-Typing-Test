@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+../include/dummy_header.h
+stdio.h
+-
+
+../include/high_score.h
+terminal.h
+../include/terminal.h
+
+../include/input.h
+terminal.h
+../include/terminal.h
+stdlib.h
+-
+ctype.h
+-
+high_score.h
+../include/high_score.h
+
 ../include/queue.h
 stdio.h
 -
@@ -30,7 +48,21 @@ queue.h
 score.h
 ../include/score.h
 
-/home/manzood/Coding/Assignments/TypingTest/src/terminal.c
-terminal.h
-/home/manzood/Coding/Assignments/TypingTest/src/terminal.h
+../include/trie.h
+ctype.h
+-
+stdbool.h
+-
+
+/home/manzood/Coding/Assignments/TypingTest/src/main.c
+dummy_header.h
+/home/manzood/Coding/Assignments/TypingTest/src/dummy_header.h
+input.h
+/home/manzood/Coding/Assignments/TypingTest/src/input.h
+queue.h
+/home/manzood/Coding/Assignments/TypingTest/src/queue.h
+trie.h
+/home/manzood/Coding/Assignments/TypingTest/src/trie.h
+ncurses.h
+-
 

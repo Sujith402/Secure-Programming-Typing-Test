@@ -28,13 +28,13 @@ int main() {
     Text_Window_State state;
     Init_Text_Window_State(&state);
 
-    score = init_score();
 
     //Put under the start() function
     //Preprocessing
     while (true) {
         if (screen_no == TEXT) {
-           WIN text_window_props;
+            score = init_score();
+            WIN text_window_props;
             WINDOW *text_window = Init_Local_Window(&text_window_props, 0.6, 0.8, -1, -1);
 
             WIN score_window_props;
