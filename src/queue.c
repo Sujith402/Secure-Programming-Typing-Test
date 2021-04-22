@@ -45,7 +45,8 @@ void Create_Queue(char *buffer, Queue *q) {
     q->size = 0;
     size_t wordStart = 0;
     size_t currWord = 0;
-    for (size_t i=0; buffer[i] != '\0'; i++) {
+    int i;
+    for(i=0; buffer[i] != '\0'; i++) {
         //Check if max words have been read
         //Stop reading if that is the case
         if (currWord == MAX_WORDS)
@@ -71,7 +72,8 @@ void Create_Queue(char *buffer, Queue *q) {
 }
 
 void Destroy_Queue(Queue *q) {
-    for (int i=0; i<q->size; i++) {
+    int i;
+    for (i=0; i<q->size; i++) {
         free(q->words[i].w);
     }
 }
@@ -83,7 +85,8 @@ void Destroy_Read_Buffer(char *buff) {
 
 //helper func for debugging
 void Display_Queue(Queue *q) {
-    for (int i=0;i<q->size;i++) {
+    int i;
+    for (i=0;i<q->size;i++) {
         printf("%s  %d\n",q->words[i].w,q->words[i].len);
     }
     printf("\n");

@@ -224,11 +224,20 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//the location of the splint executable.
+SPLINT_COMMAND:FILEPATH=splint
+
+//if YES, splint warnings will halt the build.
+SPLINT_HAS_A_FATAL:BOOL=OFF
+
 //Value Computed by CMake
 TypingTest_BINARY_DIR:STATIC=/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest/build
 
 //Value Computed by CMake
 TypingTest_SOURCE_DIR:STATIC=/mnt/c/My_Files/Uni/Notes/Sem4/CS257 - Secure Programming With C/TypingTest
+
+//if YES, splint will ne integrated into the build.
+WANT_SPLINT:BOOL=ON
 
 
 ########################
@@ -378,4 +387,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SPLINT_COMMAND
+SPLINT_COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SPLINT_HAS_A_FATAL
+SPLINT_HAS_A_FATAL-ADVANCED:INTERNAL=1
 

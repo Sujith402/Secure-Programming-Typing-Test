@@ -1,4 +1,5 @@
 user_100 47
 user_4 23
+user_100 0
 user_3 0
 user_1 0
