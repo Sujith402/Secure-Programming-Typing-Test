@@ -5,6 +5,8 @@
 #include "queue.h"
 #include "score.h"
 
+int end_game;
+
 typedef struct BORDER {
    chtype tl,tr,bl,br,ll,rr,bb,tt;
 }Border;

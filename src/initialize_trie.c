@@ -111,7 +111,7 @@ void generate_50_words (char* buffer) {
         current_word[i] = '\0'; // defining it with a placeholder value
     }
 
-    for (i = 0; i < 50; i++) {
+    for (i = 0; i < 10; i++) {
         int len = 0;
         while (len == 0) {
             len = fetch_random_word (Words, current_word);
