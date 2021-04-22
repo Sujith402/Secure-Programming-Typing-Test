@@ -32,8 +32,6 @@ int main() {
 
     score = init_score();
 
-    // initialising score
-
     //Put under the start() function
     //Preprocessing
     while (true) {
@@ -88,7 +86,6 @@ int main() {
             break;
         }
     }
-        //Till here
 
     //The local window is automatically deallocated when Exit_Terminal is called
 

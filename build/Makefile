@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named splint-TypingTest
+
+# Build rule for target.
+splint-TypingTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 splint-TypingTest
+.PHONY : splint-TypingTest
+
+# fast build rule for target.
+splint-TypingTest/fast:
+	$(MAKE) -f CMakeFiles/splint-TypingTest.dir/build.make CMakeFiles/splint-TypingTest.dir/build
+.PHONY : splint-TypingTest/fast
+
+#=============================================================================
 # Target rules for targets named TypingTest
 
 # Build rule for target.
@@ -374,6 +387,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... splint-TypingTest"
 	@echo "... TypingTest"
 	@echo "... src/high_score.o"
 	@echo "... src/high_score.i"
