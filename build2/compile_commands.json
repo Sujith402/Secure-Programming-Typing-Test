@@ -36,11 +36,6 @@
 },
 {
   "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
-  "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/stuff_to_change.c",
-  "file": "/home/manzood/Coding/Assignments/TypingTest/src/stuff_to_change.c"
-},
-{
-  "directory": "/home/manzood/Coding/Assignments/TypingTest/build2",
   "command": "/usr/bin/cc  -I/home/manzood/Coding/Assignments/TypingTest/include    -o CMakeFiles/TypingTest.dir/src/terminal.c.o   -c /home/manzood/Coding/Assignments/TypingTest/src/terminal.c",
   "file": "/home/manzood/Coding/Assignments/TypingTest/src/terminal.c"
 }

@@ -43,8 +43,6 @@ CMakeFiles/TypingTest.dir/src/score.c.o: ../src/score.c
 CMakeFiles/TypingTest.dir/src/stack.c.o: ../include/stack.h
 CMakeFiles/TypingTest.dir/src/stack.c.o: ../src/stack.c
 
-CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o: ../src/stuff_to_change.c
-
 CMakeFiles/TypingTest.dir/src/terminal.c.o: ../include/queue.h
 CMakeFiles/TypingTest.dir/src/terminal.c.o: ../include/score.h
 CMakeFiles/TypingTest.dir/src/terminal.c.o: ../include/stack.h

@@ -20,3 +20,5 @@ void init_trie ();
 void generate_50_words (char* buffer);
 
 bool Check_Words(char * buffer);
+
+void destroy_trie (struct Trie* Words);

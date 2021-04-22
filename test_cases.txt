@@ -4,9 +4,9 @@ if (bufptr + len < MAX_BUFFER_SIZE) {
         buffer[bufptr++] = current_word[j];
     }
     buffer[bufptr++] = ' ';
-} 
+}
 
-//Overpopulating the queue 
+//Overpopulating the queue
 if (currWord == MAX_WORDS)
             break;
 

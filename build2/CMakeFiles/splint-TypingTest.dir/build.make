@@ -53,8 +53,24 @@ CMAKE_BINARY_DIR = /home/manzood/Coding/Assignments/TypingTest/build2
 # Include the progress variables for this target.
 include CMakeFiles/splint-TypingTest.dir/progress.make
 
-CMakeFiles/splint-TypingTest:
-	cd /home/manzood/Coding/Assignments/TypingTest && splint -f /home/manzood/Coding/Assignments/TypingTest/splintrc +posixlib -D__linux__ -D__GNUC__ || true
+CMakeFiles/splint-TypingTest: ../src/high_score.c
+CMakeFiles/splint-TypingTest: ../src/initialize_trie.c
+CMakeFiles/splint-TypingTest: ../src/input.c
+CMakeFiles/splint-TypingTest: ../src/main.c
+CMakeFiles/splint-TypingTest: ../src/queue.c
+CMakeFiles/splint-TypingTest: ../src/score.c
+CMakeFiles/splint-TypingTest: ../src/stack.c
+CMakeFiles/splint-TypingTest: ../src/terminal.c
+CMakeFiles/splint-TypingTest: ../include/dummy_header.h
+CMakeFiles/splint-TypingTest: ../include/high_score.h
+CMakeFiles/splint-TypingTest: ../include/input.h
+CMakeFiles/splint-TypingTest: ../include/queue.h
+CMakeFiles/splint-TypingTest: ../include/score.h
+CMakeFiles/splint-TypingTest: ../include/stack.h
+CMakeFiles/splint-TypingTest: ../include/stuff_to_change.h
+CMakeFiles/splint-TypingTest: ../include/terminal.h
+CMakeFiles/splint-TypingTest: ../include/trie.h
+	cd /home/manzood/Coding/Assignments/TypingTest && splint -f /home/manzood/Coding/Assignments/TypingTest/splintrc +posixlib -D__linux__ -D__GNUC__ -I/home/manzood/Coding/Assignments/TypingTest/include /home/manzood/Coding/Assignments/TypingTest/src/high_score.c /home/manzood/Coding/Assignments/TypingTest/src/initialize_trie.c /home/manzood/Coding/Assignments/TypingTest/src/input.c /home/manzood/Coding/Assignments/TypingTest/src/main.c /home/manzood/Coding/Assignments/TypingTest/src/queue.c /home/manzood/Coding/Assignments/TypingTest/src/score.c /home/manzood/Coding/Assignments/TypingTest/src/stack.c /home/manzood/Coding/Assignments/TypingTest/src/terminal.c /home/manzood/Coding/Assignments/TypingTest/include/dummy_header.h /home/manzood/Coding/Assignments/TypingTest/include/high_score.h /home/manzood/Coding/Assignments/TypingTest/include/input.h /home/manzood/Coding/Assignments/TypingTest/include/queue.h /home/manzood/Coding/Assignments/TypingTest/include/score.h /home/manzood/Coding/Assignments/TypingTest/include/stack.h /home/manzood/Coding/Assignments/TypingTest/include/stuff_to_change.h /home/manzood/Coding/Assignments/TypingTest/include/terminal.h /home/manzood/Coding/Assignments/TypingTest/include/trie.h || true
 
 splint-TypingTest: CMakeFiles/splint-TypingTest
 splint-TypingTest: CMakeFiles/splint-TypingTest.dir/build.make

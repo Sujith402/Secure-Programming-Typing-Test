@@ -11,7 +11,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/manzood/Coding/Assignments/TypingTest/src/queue.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/queue.c.o"
   "/home/manzood/Coding/Assignments/TypingTest/src/score.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/score.c.o"
   "/home/manzood/Coding/Assignments/TypingTest/src/stack.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/stack.c.o"
-  "/home/manzood/Coding/Assignments/TypingTest/src/stuff_to_change.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o"
   "/home/manzood/Coding/Assignments/TypingTest/src/terminal.c" "/home/manzood/Coding/Assignments/TypingTest/build2/CMakeFiles/TypingTest.dir/src/terminal.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

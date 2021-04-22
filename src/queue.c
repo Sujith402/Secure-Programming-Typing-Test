@@ -25,7 +25,7 @@ char *Read_File(char *fileName) {
             fprintf(stderr,"Memory allocation to file read buffer failed\n");
             exit(1);
         }
-        size_t newLen = fread(buff, sizeof(char), buffSize, fp);
+        size_t newLen = fread(buff, sizeof(char), (size_t) buffSize, fp);
         if (newLen == 0) {
             free(buff);
             return NULL;
@@ -53,16 +53,17 @@ void Create_Queue(char *buffer, Queue *q) {
             break;
 
         while(buffer[i] != ' ' && buffer[i] != '\0' && buffer[i] != '\n') i++;
-        q->words[currWord].len = i-wordStart + 1;
-        q->words[currWord].w = malloc(sizeof(char) * ( q->words[currWord].len + 1 ));
-        strncpy(q->words[currWord].w, &buffer[wordStart], q->words[currWord].len-1);
+
+        q->words[currWord].len = (int) (i - wordStart + 1);
+        q->words[currWord].w = malloc(sizeof(char) * ( q->words[currWord].len + 1));
+        strncpy(q->words[currWord].w, &buffer[wordStart], (size_t) (q->words[currWord].len - 1));
         q->words[currWord].w[q->words[currWord].len-1] = ' ';
         q->words[currWord].w[q->words[currWord].len] = '\0';
         currWord++;
-        wordStart = i+1;
+        wordStart = (size_t) (i + 1);
     }
 
-    //Change the last word. Remove the space character. 
+    //Change the last word. Remove the space character.
     //Update it's length
     q->size = currWord;
     int last_word_len = q->words[currWord-1].len-1;
@@ -73,7 +74,7 @@ void Create_Queue(char *buffer, Queue *q) {
 
 void Destroy_Queue(Queue *q) {
     int i;
-    for (i=0; i<q->size; i++) {
+    for (i = 0; i < (int) q->size; i++) {
         free(q->words[i].w);
     }
 }
@@ -86,8 +87,8 @@ void Destroy_Read_Buffer(char *buff) {
 //helper func for debugging
 void Display_Queue(Queue *q) {
     int i;
-    for (i=0;i<q->size;i++) {
-        printf("%s  %d\n",q->words[i].w,q->words[i].len);
+    for (i = 0; i < (int) q->size; i++) {
+        printf("%s  %d\n", q->words[i].w,q->words[i].len);
     }
     printf("\n");
 }

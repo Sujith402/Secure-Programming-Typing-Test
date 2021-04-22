@@ -1,4 +1,4 @@
-#include "../include/stack.h"
+#include "stack.h"
 #include <stdio.h>
 
 struct Stack* init_stack () {

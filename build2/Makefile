@@ -325,33 +325,6 @@ src/stack.c.s:
 	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stack.c.s
 .PHONY : src/stack.c.s
 
-src/stuff_to_change.o: src/stuff_to_change.c.o
-
-.PHONY : src/stuff_to_change.o
-
-# target to build an object file
-src/stuff_to_change.c.o:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o
-.PHONY : src/stuff_to_change.c.o
-
-src/stuff_to_change.i: src/stuff_to_change.c.i
-
-.PHONY : src/stuff_to_change.i
-
-# target to preprocess a source file
-src/stuff_to_change.c.i:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.i
-.PHONY : src/stuff_to_change.c.i
-
-src/stuff_to_change.s: src/stuff_to_change.c.s
-
-.PHONY : src/stuff_to_change.s
-
-# target to generate assembly for a file
-src/stuff_to_change.c.s:
-	$(MAKE) -f CMakeFiles/TypingTest.dir/build.make CMakeFiles/TypingTest.dir/src/stuff_to_change.c.s
-.PHONY : src/stuff_to_change.c.s
-
 src/terminal.o: src/terminal.c.o
 
 .PHONY : src/terminal.o
@@ -410,9 +383,6 @@ help:
 	@echo "... src/stack.o"
 	@echo "... src/stack.i"
 	@echo "... src/stack.s"
-	@echo "... src/stuff_to_change.o"
-	@echo "... src/stuff_to_change.i"
-	@echo "... src/stuff_to_change.s"
 	@echo "... src/terminal.o"
 	@echo "... src/terminal.i"
 	@echo "... src/terminal.s"

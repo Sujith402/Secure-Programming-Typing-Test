@@ -8,9 +8,7 @@ int main() {
     // lead to main menu from here
     int screen_no = 1;
 
-    //deal with failure to initialize trie
     init_trie();
-   /* printf("Done initializing the trie\n"); */
 
     Init_Terminal();
     Init_Colour();
@@ -45,8 +43,8 @@ int main() {
             Determine_Line_No(&q,&text_window_props);
 
             //Display the box with the words
-            Display_Box(text_window,&text_window_props,true);
-            Display_Box(score_window,&score_window_props,true);
+            Display_Box(text_window,&text_window_props, true);
+            Display_Box(score_window,&score_window_props, true);
 
             Display_Current_Score (score_window, &score_window_props, score);
             Display_Text(text_window,&text_window_props,&q, state.lines_done);
@@ -72,7 +70,7 @@ int main() {
         else if (screen_no == USER_PROMPT) {
             WIN take_name_window_props;
             WINDOW *take_name_window = Init_Local_Window(&take_name_window_props, 0.2, 0.3, -1, -1);
-            Display_Box(take_name_window, &take_name_window_props, &screen_no);
+            Display_Box(take_name_window, &take_name_window_props, true);
 
             char user_name[31];
             int flag = Update_High_Score(take_name_window,&take_name_window_props, &screen_no, user_name);
@@ -88,10 +86,11 @@ int main() {
     }
 
     //The local window is automatically deallocated when Exit_Terminal is called
-
     Exit_Terminal();
 
     Destroy_Queue(&q);
+
+    /* destroy_trie (Words); */ // Causes issues at the moment
 
     print_score (score);
 

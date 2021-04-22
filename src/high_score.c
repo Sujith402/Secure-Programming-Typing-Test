@@ -1,4 +1,4 @@
-#include "../include/high_score.h"
+#include "high_score.h"
 
 //update the entries with the necessary info
 //buffer has already been sanitized so no checks are performed here
@@ -98,7 +98,7 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
     wprintw(win,"Enter user name: ");
     wmove(win,y,curr_x);
 
-    while ((ch = wgetch(win)) != KEY_F(1) && ch != KEY_F(2) && ch != KEY_F(3) && ch != KEY_F(4)) {
+    while ((ch = (chtype) wgetch(win)) != KEY_F(1) && ch != KEY_F(2) && ch != KEY_F(3) && ch != KEY_F(4)) {
         if (ch == ENTER_KEY) {
             if (word_length!=0){
                 flag = 1;
@@ -109,7 +109,7 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
             if (ch == KEY_BACKSPACE || ch == KEY_DC) {
                 if (curr_x > 2) {
                     curr_x--;
-                    mvwaddch(win,y,curr_x,' ');
+                    mvwaddch(win,y,curr_x,(chtype)' ');
                     wmove(win,y,curr_x);
                     word_length--;
                 }
@@ -117,7 +117,7 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
             else if (curr_x - 2 <= MAX_USER_NAME_LENGTH){
                 waddch(win, ch);
                 if (ch != ' ')
-                    name[word_length++] = ch;
+                    name[word_length++] = (char) ch;
                 else
                     name[word_length++] = '_';
                 curr_x++;
@@ -127,7 +127,7 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
 
     name[word_length] = '\0';
 
-    *screen_no = switch_screen(ch);
+    *screen_no = switch_screen((int) ch);
     return flag;
 }
 
@@ -209,11 +209,10 @@ bool Is_Ok(chtype ch) {
 //add in lines in high_score window
 void print_entry(WINDOW *win, WIN* win_props, int y, Entry curr_entry) {
 
-    int x = 1 + (win_props->width/2 - strlen(curr_entry.name))/2;
+    int x = (int) (1 + (win_props->width/2 - strlen(curr_entry.name))/2);
     mvwprintw(win,y,x,curr_entry.name);
 
-    x = win_props->width/2 + (win_props->width/2 - strlen(curr_entry.score))/2;
-
+    x = (int) (win_props->width/2 + (win_props->width/2 - strlen(curr_entry.score))/2);
 
     mvwprintw(win,y,x,curr_entry.score);
 

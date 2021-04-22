@@ -6,7 +6,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/TypingTest.dir/src/queue.c.o"
   "CMakeFiles/TypingTest.dir/src/score.c.o"
   "CMakeFiles/TypingTest.dir/src/stack.c.o"
-  "CMakeFiles/TypingTest.dir/src/stuff_to_change.c.o"
   "CMakeFiles/TypingTest.dir/src/terminal.c.o"
   "TypingTest"
   "TypingTest.pdb"

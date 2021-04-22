@@ -3,7 +3,7 @@
 void Init_Terminal() {
     //enable ncurses to work, disable input buffering and don't echo input onto
     //terminal
-    initscr();
+    (void) initscr();
     cbreak();
     noecho();
 
@@ -15,8 +15,8 @@ void Init_Terminal() {
 WINDOW *Init_Local_Window(WIN *win, float height, float width, float startx, float starty) {
     //Initialise the window attributes. Accessible via the window itself but they
     //are not meant to be accessed (modified mainly)
-    win->width = (width) * COLS;
-    win->height = (height) * LINES > 3 ? (height) * LINES : 3;
+    win->width = (int) ((width) * COLS);
+    win->height = (int) ((height) * LINES > 3 ? (height) * LINES : 3);
 
     if (startx == -1 && starty == -1) {
         win->startx = (COLS - win->width)/2;
@@ -26,10 +26,10 @@ WINDOW *Init_Local_Window(WIN *win, float height, float width, float startx, flo
         win->starty = LINES * starty;
     }
 
-    win->border.bb = win->border.tt = '-';
-    win->border.ll = win->border.rr = '|';
-    win->border.tl = win->border.tr = '+';
-    win->border.bl = win->border.br = '+';
+    win->border.bb = win->border.tt = (chtype) '-';
+    win->border.ll = win->border.rr = (chtype) '|';
+    win->border.tl = win->border.tr = (chtype) '+';
+    win->border.bl = win->border.br = (chtype) '+';
 
     WINDOW *local_win = newwin(win->height,win->width,win->starty,win->startx);
 
@@ -46,7 +46,7 @@ void Display_Box(WINDOW *win, WIN *win_props, bool visible) {
             border.tl,border.tr,border.bl,border.br);
     }
     else {
-        wborder(win, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
+        wborder(win, (chtype) ' ', (chtype) ' ', (chtype) ' ', (chtype) ' ', (chtype) ' ', (chtype) ' ', (chtype) ' ', (chtype) ' ');
     }
     wrefresh(win);
 }
@@ -57,7 +57,7 @@ void Determine_Line_No(Queue *q, WIN *win_props) {
 
     //Initialise boundries upto which characters may be printed
     int x_max = win_props->width - 1;
-    int y_max = win_props->height - 1;
+    /* int y_max = win_props->height - 1; */ // declared but not used
 
     //Determine line numbers
     size_t i=q->start;
@@ -75,13 +75,13 @@ void Determine_Line_No(Queue *q, WIN *win_props) {
 
 void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
     //Clear the window and show changes.
-    wmove(win,1,1);
+    wmove(win, 1, 1);
     int y;
-    for (y=1; y<win_props->height-1; y++){
+    for (y = 1; y < win_props->height - 1; y++){
         int x;
-        for (x=1; x<win_props->width - 1; x++)
-            waddch(win, ' ');
-        wmove(win,y+1,1);
+        for (x = 1; x < win_props->width - 1; x++)
+            waddch(win, (chtype) ' ');
+        wmove(win, y + 1, 1);
     }
 
     //Move to start position
@@ -92,7 +92,7 @@ void Display_Text(WINDOW *win,WIN *win_props, Queue *q, int lines_done) {
     //int i = q->start;
     //while (i<q->size && q->words[i].line - lines_done != curr_line+1) i++;
     int i;
-    for (i = q->start; i<q->size; i++) {
+    for (i = (int) q->start; i < (int) q->size; i++) {
         //handle when switching back to text from high scores
         if (q->words[i].w[q->words[i].len - 1] == '_')
             q->words[i].w[q->words[i].len - 1] = ' ';
@@ -121,7 +121,7 @@ void Display_Current_Score (WINDOW* win, WIN* win_props, struct Score* score) {
     for (y=1; y<win_props->height-1; y++){
         int x;
         for (x=1; x<win_props->width - 1; x++)
-            waddch(win, ' ');
+            waddch(win, (chtype) ' ');
         wmove(win,y+1,1);
     }
 
@@ -129,7 +129,7 @@ void Display_Current_Score (WINDOW* win, WIN* win_props, struct Score* score) {
     char s[100];
     snprintf(s, 100, "WPM = %d, accuracy = %d", score->net_WPM, score->accuracy);
 
-    wmove (win, win_props->height/2 - (1-win_props->height%2), (win_props->width - strlen(s))/2);
+    wmove (win, win_props->height/2 - (1-win_props->height%2), (int) (win_props->width - strlen(s)) / 2);
     /* printf("%d ", score->all_typed_entries); */
     wprintw(win, s);
     wrefresh(win);
@@ -137,7 +137,7 @@ void Display_Current_Score (WINDOW* win, WIN* win_props, struct Score* score) {
 
 //Queue's pop functionality
 void Delete_Line(WINDOW *win, WIN *win_props, Queue *q, int word_no, int lines_done) {
-    q->start = word_no;
+    q->start = (size_t) word_no;
     Display_Text(win,win_props,q,lines_done);
 }
 

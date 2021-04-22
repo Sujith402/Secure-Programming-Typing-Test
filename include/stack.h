@@ -12,7 +12,7 @@ struct Stack {
 
 /*@null@*/
 struct Stack* init_stack ();
-static struct Node* create_node (int data, struct Node* prev);
+// static struct Node* create_node (int data, struct Node* prev);
 void push (struct Stack* st, int data);
 int pop (struct Stack* st);
 void destroy_stack (struct Stack* st);

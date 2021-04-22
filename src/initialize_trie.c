@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../include/trie.h"
-#include "../include/queue.h"
+#include "trie.h"
+#include "queue.h"
 
 // function to get a random number within a particular range
 static int getrand (int a, int b) {
