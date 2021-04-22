@@ -59,7 +59,9 @@ void Display_Scores(WINDOW *win, WIN *win_props, int *screen_no) {
     while ((ch = wgetch(win)) != KEY_F(1) && ch != KEY_F(2) && ch != KEY_F(3) && ch != KEY_F(4)) {
 
     }
-
+    FILE *fp = fopen("../debug.txt","a");
+    fprintf(fp,"%d\n",end_game);
+    fclose(fp);
     *screen_no = switch_screen(ch);
 
     Destroy_Read_Buffer(buff);
@@ -83,6 +85,9 @@ int switch_screen(int ch) {
             screen_no = EXIT;
             break;
     }
+
+    if (end_game)
+        return EXIT;
     return screen_no;
 }
 
@@ -127,7 +132,7 @@ int Update_High_Score(WINDOW *win, WIN *win_props, int *screen_no, char *name) {
 
     name[word_length] = '\0';
 
-    *screen_no = switch_screen((int) ch);
+    *screen_no = HIGH_SCORE;
     return flag;
 }
 
@@ -240,4 +245,19 @@ void Check_Scores(char *fileName) {
             break;
         }
     }
+}
+
+int Least_Score(char *fileName) {
+    int res;
+    Check_Scores(fileName);
+    char *buffer = Read_File(fileName);
+    int i;
+    while (buffer[i] != '\0') i++;
+    while (i>=0 && buffer[i] != ' ') i--;
+
+    //Upon unsuccessful conversion, 0 is returned i.e., the last score will be replaced
+    //as is expected
+    res = i==0 ? 0 : atoi(&buffer[i+1]);
+
+    return res;
 }

@@ -1,12 +1,15 @@
-#include "dummy_header.h"
 #include "input.h"
 #include "queue.h"
 #include "trie.h"
 #include <ncurses.h>
 
+
 int main() {
     // lead to main menu from here
     int screen_no = 1;
+
+    // end_game defined in terminal.h
+    end_game = 0;
 
     init_trie();
 
@@ -28,6 +31,7 @@ int main() {
     Text_Window_State state;
     Init_Text_Window_State(&state);
 
+    int least_score = Least_Score("../high_Scores.txt");
 
     //Put under the start() function
     //Preprocessing
@@ -49,7 +53,7 @@ int main() {
             Display_Current_Score (score_window, &score_window_props, score);
             Display_Text(text_window,&text_window_props,&q, state.lines_done);
 
-            Take_Input(text_window, &text_window_props, score_window, &score_window_props, &q, &screen_no, &state, score);
+            Take_Input(text_window, &text_window_props, score_window, &score_window_props, &q, &screen_no, &state, score, least_score);
 
             //wborder(text_window, ' ', ' ', ' ',' ',' ',' ',' ',' ');
             Destroy_Window(text_window);

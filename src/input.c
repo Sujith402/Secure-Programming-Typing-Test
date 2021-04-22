@@ -7,7 +7,7 @@ void Init_Text_Window_State(Text_Window_State* state) {
     state->lines_done = 0;
 }
 
-void Take_Input(WINDOW *win, WIN *win_props, WINDOW *score_window, WIN *score_window_props, Queue *q, int *screen_no, Text_Window_State* state, struct Score* score) {
+void Take_Input(WINDOW *win, WIN *win_props, WINDOW *score_window, WIN *score_window_props, Queue *q, int *screen_no, Text_Window_State* state, struct Score* score, int least_score) {
     //ch is int as function keys return >8 bits
     chtype ch;   //chtype comes from ncurses. Always is able to hold character codes.
     int choice;
@@ -80,7 +80,18 @@ void Take_Input(WINDOW *win, WIN *win_props, WINDOW *score_window, WIN *score_wi
             wrefresh(win);
         }
     }
-    *screen_no = switch_screen((int) ch);
+    if (score->net_WPM >= least_score && state->word_no == (int) q->size) {
+            FILE *fp = fopen("../debug.txt","a");
+            fprintf(fp,"%d\n",end_game);
+            fclose(fp);
+        end_game = 1;
+        *screen_no = USER_PROMPT;
+            fp = fopen("../debug.txt","a");
+            fprintf(fp,"%d\n",end_game);
+            fclose(fp);
+    }
+    else 
+        *screen_no = switch_screen((int) ch);
 }
 
 void Handle_Backspace(int *choice,Text_Window_State* state, Queue *q) {
