@@ -81,14 +81,8 @@ void Take_Input(WINDOW *win, WIN *win_props, WINDOW *score_window, WIN *score_wi
         }
     }
     if (score->net_WPM >= least_score && state->word_no == (int) q->size) {
-            FILE *fp = fopen("../debug.txt","a");
-            fprintf(fp,"%d\n",end_game);
-            fclose(fp);
         end_game = 1;
         *screen_no = USER_PROMPT;
-            fp = fopen("../debug.txt","a");
-            fprintf(fp,"%d\n",end_game);
-            fclose(fp);
     }
     else 
         *screen_no = switch_screen((int) ch);

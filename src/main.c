@@ -31,7 +31,7 @@ int main() {
     Text_Window_State state;
     Init_Text_Window_State(&state);
 
-    int least_score = Least_Score("../high_Scores.txt");
+    int least_score = Least_Score("../High_Scores.txt"); //needs to change
 
     //Put under the start() function
     //Preprocessing
@@ -58,6 +58,7 @@ int main() {
             //wborder(text_window, ' ', ' ', ' ',' ',' ',' ',' ',' ');
             Destroy_Window(text_window);
             Destroy_Window(score_window);
+
         }
 
         else if (screen_no == HIGH_SCORE) {
@@ -91,11 +92,9 @@ int main() {
 
     //The local window is automatically deallocated when Exit_Terminal is called
     Exit_Terminal();
-
     Destroy_Queue(&q);
-
-    /* destroy_trie (Words); */ // Causes issues at the moment
-
+    destroy_trie (Words); 
+    destroy_score(score);
     print_score (score);
 
     /* print_stack (score); */
