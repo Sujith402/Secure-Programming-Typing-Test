@@ -111,7 +111,7 @@ void generate_50_words (char* buffer) {
         current_word[i] = '\0'; // defining it with a placeholder value
     }
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 5; i++) {
         int len = 0;
         while (len == 0) {
             len = fetch_random_word (Words, current_word);
@@ -250,7 +250,7 @@ static void destroy_children (struct TrieNode* current) {
 void destroy_trie (struct Trie* Words) {
     if (!Words) return;
     destroy_children (Words->root);
-    free (Words->root);
+    //free (Words->root);
     free (Words);
 }
 

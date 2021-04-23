@@ -250,14 +250,29 @@ void Check_Scores(char *fileName) {
 int Least_Score(char *fileName) {
     int res;
     Check_Scores(fileName);
+    int entries = 0;
     char *buffer = Read_File(fileName);
-    int i;
-    while (buffer[i] != '\0') i++;
-    while (i>=0 && buffer[i] != ' ') i--;
 
+    if (buffer == NULL){
+        return 0;
+    }
+
+    int i = 0;
+    while (buffer[i] != '\0') {
+        i++;
+        if (buffer[i] == '\n') {
+            entries++;
+        }
+    }
+    while (i>=0 && buffer[i] != ' ') {
+        i--;
+    }
     //Upon unsuccessful conversion, 0 is returned i.e., the last score will be replaced
     //as is expected
-    res = i==0 ? 0 : atoi(&buffer[i+1]);
+    if (entries < MAX_HIGH_SCORE_ENTRIES)   
+        res = 0;
+    else 
+        res = i==0 ? 0 : atoi(&buffer[i+1]);
 
     return res;
 }
